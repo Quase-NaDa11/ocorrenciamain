@@ -1,0 +1,51 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.geral{
+    width: 100%;
+    margin-top: 8vw;
+  
+  
+}
+h1{
+    text-align: center;
+    color: aliceblue;
+}
+body{
+    width: 100vw;
+    background-color: #048a23;
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Inter';
+    
+}
+.img{
+    display: flex;
+    justify-content:space-around;
+}
+.botao{
+    display: flex
+    ;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2vw;
+        
+    
+}
+button{
+ background-color: rgb(233, 91, 39);
+ padding: 40px 70px 40px 80px;
+ border-radius: 12px;
+ color: aliceblue;
+ font-size: 24px;
+ transition: all ease .5s;
+ cursor: pointer;
+ 
+  
+
+}
+button:hover{
+    transform: scale(1.1);
+}
