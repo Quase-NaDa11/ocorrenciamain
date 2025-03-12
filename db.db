@@ -1,0 +1,44 @@
+-- Criar o banco de dados se ainda não existir
+CREATE DATABASE IF NOT EXISTS ocorrencias;
+USE ocorrencias;
+
+-- Criar a tabela Coordenador
+CREATE TABLE IF NOT EXISTS Coordenador (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    cpf CHAR(11) UNIQUE NOT NULL,
+    senha_hash VARCHAR(255) NOT NULL
+);
+
+-- Criar a tabela Professor
+CREATE TABLE IF NOT EXISTS Professor (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email_institucional VARCHAR(255) UNIQUE NOT NULL,
+    cpf CHAR(11) UNIQUE NOT NULL,
+    disciplina VARCHAR(255) NOT NULL
+);
+
+-- Criar a tabela Ocorrencia
+CREATE TABLE IF NOT EXISTS Ocorrencia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    estudante VARCHAR(255) NOT NULL,
+    aula VARCHAR(255) NOT NULL,
+    situacao TEXT NOT NULL,
+    turma VARCHAR(50) NOT NULL,
+    professor_id INT NOT NULL,
+    data DATE NOT NULL,
+    descricao TEXT NOT NULL,
+    encaminhamento TEXT,
+    FOREIGN KEY (professor_id) REFERENCES Professor(id) ON DELETE CASCADE
+);
+
+-- Criar a tabela Coordenacao
+CREATE TABLE IF NOT EXISTS Coordenacao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ocorrencia_id INT NOT NULL,
+    data_recebimento DATE NOT NULL,
+    responsavel_recebimento VARCHAR(255) NOT NULL,
+    FOREIGN KEY (ocorrencia_id) REFERENCES Ocorrencia(id) ON DELETE CASCADE
+);

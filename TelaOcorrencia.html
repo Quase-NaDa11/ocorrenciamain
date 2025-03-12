@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="img/escola-removebg-preview.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!---->
+    <header>
+      <div class="logo-container">
+        <img src="img/brasao-do-ceara.png" alt="" width="70px" />
+        <p class="texto" style="color: white">
+          GOVERNO DO ESTADO DO CEARÁ <br />
+          19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
+          ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSONAL PAULO BARBOSA LEITE
+        </p>
+
+        <img src="img/escola-removebg-preview.png" alt="" width="100px" />
+      </div>
+    </header>
+
+    <main>
+      <div class="main-container">
+        <h1>REGISTRO DE SITUAÇÕES DIVERSAS</h1>
+<form action="ocorrencia.php" method="post">
+    <fieldset class="estudante">
+      <label for="estudante">Estudante:</label><br />
+      <input type="text" name="estudante" required /><br />
+  
+      <label for="aula">Aula:</label>
+      <select name="aula" required>
+        <option disabled selected hidden>Selecione a aula</option>
+        <option value="1">1°</option>
+        <option value="2">2°</option>
+        <option value="3">3°</option>
+        <option value="4">4°</option>
+        <option value="5">5°</option>
+        <option value="6">6°</option>
+        <option value="7">7°</option>
+        <option value="8">8°</option>
+        <option value="9">9°</option>
+      </select>
+  
+      <label for="situacao">Escolha uma situação:</label>
+      <select name="situacao" id="situacao" onchange="mostrarInput(this)" required>
+        <option disabled selected hidden>Selecione uma situação</option>
+        <option value="indisciplina">Indisciplina</option>
+        <option value="celular">Celular</option>
+        <option value="desrespeito">Desrespeito</option>
+        <option value="rendimento">Rendimento</option>
+        <option value="atrasos">Atrasos</option>
+        <option value="faltas">Faltas</option>
+        <option value="outros">Outros</option>
+      </select>
+  
+      <!-- Campo oculto para "Outros" -->
+      <input type="text" name="situacao_outros" id="outro" style="display: none" placeholder="Digite a situação" />
+  
+      <label for="turma">Turma:</label>
+      <select name="turma" required>
+        <option disabled selected hidden>Selecione a turma</option>
+        <option value="1º Administração">1° Administração</option>
+        <option value="1º Agropecuária">1° Agropecuária</option>
+        <option value="1º Informática">1° Informática</option>
+        <option value="1º Desenvolvimento de Sistema">1° Desenvolvimento de Sistema</option>
+        <option value="2º Administração">2° Administração</option>
+        <option value="2º Agropecuária">2° Agropecuária</option>
+        <option value="2º Informática">2° Informática</option>
+        <option value="2º Desenvolvimento de Sistema">2° Desenvolvimento de Sistema</option>
+        <option value="3º Administração">3° Administração</option>
+        <option value="3º Agropecuária">3° Agropecuária</option>
+        <option value="3º Informática">3° Informática</option>
+        <option value="3º Desenvolvimento de Sistema">3° Desenvolvimento de Sistema</option>
+      </select>
+    </fieldset>
+  
+    <fieldset class="professor">
+      <label for="professor_nome">Professor Responsável:</label>
+<input type="text" name="professor_nome" required placeholder="Digite o nome do professor" />
+
+  
+      <label for="data">Data:</label><br />
+      <input type="datetime-local" name="data" required />
+  
+      <label for="descricao">Descrição:</label> <br />
+      <textarea name="descricao" rows="5" cols="89" required></textarea>
+  
+      <label for="encaminhamento">Encaminhamento:</label><br />
+      <textarea name="encaminhamento" rows="4" cols="89"></textarea>
+    </fieldset>
+  
+    <button type="submit">Enviar</button>
+  </form>
+  
+  <script>
+    function mostrarInput(select) {
+      var outroInput = document.getElementById("outro");
+      if (select.value === "outros") {
+        outroInput.style.display = "block";
+        outroInput.name = "situacao"; // Define o name do campo alternativo
+      } else {
+        outroInput.style.display = "none";
+        outroInput.name = ""; // Remove o name para não enviar valor vazio
+      }
+    }
+  </script>
+  
