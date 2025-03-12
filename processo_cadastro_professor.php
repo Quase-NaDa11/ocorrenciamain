@@ -1,40 +1,52 @@
 <?php
 // Conectar ao banco de dados
 $servername = "localhost";
-$username = "root"; // Usuário do MySQL (alterar se necessário)
-$password = ""; // Senha do MySQL (alterar se necessário)
-$dbname = "ocorrencias"; // Nome do banco de dados
+$username = "root";
+$password = "";
+$dbname = "ocorrencias"; // Altere para o nome do seu banco de dados
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verificar conexão
 if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
+    die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
-// Capturar dados do formulário
-$nome = $_POST['nome'];
-$email_institucional = $_POST['email_institucional'];
-$cpf = $_POST['cpf'];
-$disciplina = $_POST['disciplina'];
+// Verifica se os campos do formulário foram preenchidos
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = $_POST["nome"] ?? '';
+    $email = $_POST["email"] ?? '';
+    $cpf = $_POST["cpf"] ?? '';
+    $disciplina = $_POST["disciplina"] ?? '';
+    $senha = $_POST["senha"] ?? '';
 
-// Verificar se o CPF ou o e-mail já existem
-$sql_verifica = "SELECT id FROM Professor WHERE cpf = ? OR email_institucional = ?";
-$stmt_verifica = $conn->prepare($sql_verifica);
-$stmt_verifica->bind_param("ss", $cpf, $email_institucional);
-$stmt_verifica->execute();
-$stmt_verifica->store_result();
+    // Verificar se todos os campos foram preenchidos
+    if (empty($nome) || empty($email) || empty($cpf) || empty($disciplina) || empty($senha)) {
+        die("Erro: Todos os campos são obrigatórios.");
+    }
 
-if ($stmt_verifica->num_rows > 0) {
-    echo "Erro: CPF ou e-mail já cadastrados!";
-} else {
-    // Inserir professor no banco de dados
-    $sql = "INSERT INTO Professor (nome, email_institucional, cpf, disciplina) VALUES (?, ?, ?, ?)";
+    // Verificar se o email já existe no banco de dados
+    $sql_verifica = "SELECT id FROM professor WHERE email_institucional = ?";
+    $stmt_verifica = $conn->prepare($sql_verifica);
+    $stmt_verifica->bind_param("s", $email);
+    $stmt_verifica->execute();
+    $stmt_verifica->store_result();
+
+    if ($stmt_verifica->num_rows > 0) {
+        die("Erro: Este email já está cadastrado.");
+    }
+    $stmt_verifica->close();
+
+    // Hash da senha antes de salvar no banco de dados
+    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+
+    // Inserir dados na tabela "professor"
+    $sql = "INSERT INTO professor (nome, email_institucional, cpf, disciplina, senha) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $nome, $email_institucional, $cpf, $disciplina);
+    $stmt->bind_param("sssss", $nome, $email, $cpf, $disciplina, $senha_hash);
 
     if ($stmt->execute()) {
-        echo "Professor cadastrado com sucesso!";
+        echo "Cadastro realizado com sucesso!";
     } else {
         echo "Erro ao cadastrar: " . $stmt->error;
     }
@@ -42,6 +54,5 @@ if ($stmt_verifica->num_rows > 0) {
     $stmt->close();
 }
 
-$stmt_verifica->close();
 $conn->close();
 ?>
