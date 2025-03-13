@@ -18,7 +18,7 @@ $result = $conn->query($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
     <title>Recebimento de Ocorrências</title>
-    <link rel="stylesheet" href="css/historico2.css">
+    <link rel="stylesheet" href="historico2.css">
 </head>
 <body>
 <header>

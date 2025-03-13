@@ -47,6 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         echo "Cadastro realizado com sucesso!";
+        header("Location: geral.html"); // Redirecionar para login
+        exit();
     } else {
         echo "Erro ao cadastrar: " . $stmt->error;
     }

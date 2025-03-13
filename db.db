@@ -3,13 +3,15 @@ CREATE DATABASE IF NOT EXISTS ocorrencias;
 USE ocorrencias;
 
 -- Criar a tabela Coordenador
-CREATE TABLE IF NOT EXISTS Coordenador (
+CREATE TABLE Coordenador (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    cpf CHAR(11) UNIQUE NOT NULL,
-    senha_hash VARCHAR(255) NOT NULL
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    admin TINYINT(1) NOT NULL DEFAULT 1
 );
+
+
 
 -- Criar a tabela Professor
 CREATE TABLE IF NOT EXISTS Professor (

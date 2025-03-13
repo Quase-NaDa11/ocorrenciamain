@@ -72,7 +72,7 @@ $result = $conn->query($sql);
                             <th>Problema</th>
                             <th>Data</th>
                             <th>Professor</th>
-                            <th>Situação</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
