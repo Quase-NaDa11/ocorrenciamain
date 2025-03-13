@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
+    
     <div class="login-container">
         <h2>Login da Coordenação</h2>
         <?php if (isset($erro)) echo "<p style='color: red;'>$erro</p>"; ?>
