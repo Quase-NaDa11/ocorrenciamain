@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute()) {
             echo "Cadastro realizado com sucesso!";
-            header("Location: login_coordenaca.php"); // Redirecionar para login
+            header("Location: geral.html"); // Redirecionar para login
             exit();
         } else {
             echo "Erro ao cadastrar.";

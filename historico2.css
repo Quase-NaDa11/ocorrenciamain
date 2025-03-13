@@ -33,7 +33,7 @@ header {
 
 /* Container Principal */
 .main-container {
-    margin-top: 20px;
+    margin-top: 120px; /* Aumentei a margem para descer mais o container */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;

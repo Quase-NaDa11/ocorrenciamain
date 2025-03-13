@@ -1,51 +1,122 @@
+/* Resetando algumas configurações padrões do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+/* Corpo da página */
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #048a23; /* Cor de fundo do site */
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-.geral{
+/* Contêiner geral para o conteúdo */
+.geral {
     width: 100%;
     margin-top: 8vw;
-  
-  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-h1{
+
+/* Estilo para o título */
+h1 {
     text-align: center;
     color: aliceblue;
+    margin-bottom: 20px;
+    font-size: 2rem; /* Tamanho de fonte adaptável */
 }
-body{
-    width: 100vw;
-    background-color: #048a23;
-    margin: 0%;
-    padding: 0%;
-    font-family: 'Inter';
-    
-}
-.img{
-    display: flex;
-    justify-content:space-around;
-}
-.botao{
-    display: flex
-    ;
-        flex-wrap: nowrap;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
-        margin-top: 2vw;
-        
-    
-}
-button{
- background-color: rgb(233, 91, 39);
- padding: 40px 70px 40px 80px;
- border-radius: 12px;
- color: aliceblue;
- font-size: 24px;
- transition: all ease .5s;
- cursor: pointer;
- 
-  
 
+/* Imagens dentro de uma div */
+.img {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap; /* Adicionando wrap para responsividade */
+    margin-bottom: 20px;
 }
-button:hover{
+
+/* Estilo dos botões */
+.botao {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vw;
+}
+
+button {
+    background-color: rgb(233, 91, 39);
+    padding: 20px 40px;
+    border-radius: 12px;
+    color: aliceblue;
+    font-size: 1.5rem; /* Ajuste de fonte para melhor responsividade */
+    transition: all ease .5s;
+    cursor: pointer;
+    margin: 10px;
+    display: inline-block;
+}
+
+/* Efeito hover nos botões */
+button:hover {
     transform: scale(1.1);
+}
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 768px) {
+    /* Ajustando a altura da tela */
+    body {
+        height: auto;
+        padding-top: 100px; /* Garantindo que o conteúdo não fique coberto */
+    }
+
+    /* Ajustes no título */
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    /* Ajustes no botão */
+    button {
+        font-size: 1.2rem;
+        padding: 15px 30px;
+    }
+
+    /* Ajuste nas imagens */
+    .img {
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+/* Responsividade para telas menores que 480px (celulares) */
+@media screen and (max-width: 480px) {
+    /* Ajustes no título */
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    /* Ajuste no tamanho dos botões */
+    button {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+
+    /* Ajuste no contêiner das imagens */
+    .img {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Ajuste do contêiner geral */
+    .geral {
+        margin-top: 10vw;
+    }
 }

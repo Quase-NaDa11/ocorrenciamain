@@ -1,0 +1,131 @@
+/* Reset e Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-color: #048a23;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* HEADER FIXO */
+header {
+    width: 100%;
+    background-color: #01923d;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Ajuste do conteúdo do header */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.texto {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* MAIN CENTRALIZADO CORRETAMENTE */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1; /* Faz com que o main ocupe o espaço necessário */
+    margin-top: 80px; /* Garante que o conteúdo não fique colado no header */
+}
+
+/* CONTAINER DOS BOTÕES */
+.botaoo {
+    width: 90%;
+    max-width: 650px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Botões */
+button {
+    background-color: rgb(233, 91, 39);
+    padding: 20px 50px;
+    border-radius: 12px;
+    color: aliceblue;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    margin: 15px 0;
+    border: none;
+    outline: none;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: rgb(255, 91, 39);
+}
+
+/* RESPONSIVIDADE */
+
+/* Para telas grandes (PCs e notebooks) */
+@media (min-width: 1200px) {
+    .botaoo {
+        width: 40%;
+    }
+}
+
+/* Para tablets */
+@media (max-width: 1199px) and (min-width: 768px) {
+    .botaoo {
+        width: 60%;
+    }
+}
+
+/* Para celulares */
+@media (max-width: 767px) {
+    .botaoo {
+        width: 85%;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 15px 30px;
+    }
+    /* Ocultar texto e primeira imagem em telas menores */
+
+    .texto, 
+    .logo-container img:first-child { 
+        display: none; /* Esconde o texto e a primeira imagem */
+    }
+
+
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+    .logo-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

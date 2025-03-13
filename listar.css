@@ -1,0 +1,199 @@
+/* Resetando algumas configurações padrões do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #048a23; /* Cor de fundo do site */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 80px; /* Espaço superior para não sobrepor o cabeçalho fixo */
+}
+
+/* Cabeçalho */
+header {
+    width: 100%;
+    text-align: center;
+    background-color: #01923d;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
+}
+
+/* Texto no cabeçalho */
+.texto {
+    color: white;
+    font-size: 14px;
+}
+
+/* Logo e conteúdo do header */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Container principal da página */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+    margin: 80px auto 20px; /* Ajustei a margem superior para compensar o cabeçalho fixo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box; /* Faz o padding e border não afetarem a largura total */
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para a tabela */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    overflow-x: auto; /* Permite rolagem horizontal em telas menores */
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th, td {
+    padding: 10px;
+    word-wrap: break-word; /* Quebra de palavras para não transbordar */
+    max-width: 200px; /* Limita a largura das células */
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+/* Estilo para as células da tabela */
+td {
+    font-size: 14px;
+}
+
+/* Estilo dos botões */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%; /* Faz os botões ocuparem 100% da largura */
+    box-sizing: border-box; /* Faz o botão considerar o padding e borda dentro da largura */
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px; /* Adiciona espaço entre os botões */
+}
+
+/* Botões de editar e excluir */
+.edit-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #e53935;
+}
+
+/* Ajustes de espaçamento */
+td a {
+    margin-right: 10px;
+}
+
+/* Responsividade para Tablets e Celulares */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 15px;
+        width: 95%;
+        margin: 150px auto 20px; /* Ajuste na margem para dispositivos menores */
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    table th, table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .button:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Para telas menores que 600px (Celulares) */
+@media screen and (max-width: 600px) {
+    .logo-container {
+        flex-direction: column;
+    }
+
+    /* Remove o texto do header e a primeira imagem */
+    .texto,
+    .logo-container img:first-child {
+        display: none;
+    }
+
+    .container {
+        width: 95%;
+        padding: 15px;
+        margin: 180px auto 20px; /* Maior margem para telas pequenas */
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    /* Ajusta os botões */
+    .button {
+        padding: 8px 16px; /* Reduz o padding em telas pequenas */
+        font-size: 12px; /* Ajusta o tamanho da fonte */
+    }
+
+    /* Tabela */
+    table {
+        overflow-x: auto; /* Permite rolagem horizontal */
+        -webkit-overflow-scrolling: touch; /* Suporte para rolagem suave em dispositivos móveis */
+    }
+
+    th, td {
+        max-width: 150px; /* Limita a largura das células para caber na tela */
+        overflow: hidden; /* Garante que o conteúdo não transborde */
+        text-overflow: ellipsis; /* Adiciona reticências quando o texto for muito grande */
+    }
+}

@@ -1,33 +1,19 @@
 <?php
-// Conexão com o banco de dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ocorrencias";
+include 'conexao.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
 
-// Verificar conexão
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-}
-
-// Verificar se a requisição é POST
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $professor_id = 1; // Exemplo, você pode pegar o ID de forma dinâmica
-
-    // Consulta para excluir o professor
-    $sql = "DELETE FROM professor WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $professor_id);
+    $query = "DELETE FROM Professor WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        echo "Professor excluído com sucesso!";
+        echo "<script>alert('Professor excluído com sucesso!'); window.location.href='listar_professores.php';</script>";
     } else {
-        echo "Erro ao excluir professor: " . $stmt->error;
+        echo "<script>alert('Erro ao excluir professor!'); window.history.back();</script>";
     }
-
-    $stmt->close();
-    $conn->close();
+} else {
+    echo "<script>alert('ID inválido!'); window.location.href='listar_professores.php';</script>";
 }
 ?>

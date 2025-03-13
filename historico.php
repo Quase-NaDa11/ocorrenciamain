@@ -45,10 +45,13 @@ $result = $conn->query($sql);
     <div class="tudo">
         <div class="h1-novo">
             <div class="h1-busca">
-                <div class="btn-group">
-                    <button type="button" id="Concluido" class="btn btn-success btn-xs">Concluído</button>
-                    <button type="button" id="Andamento" class="btn btn-warning btn-xs">Andamento</button>
+                <div class="btn-group"><a href="TelaOcorrencia.html" class="btn btn-warning btn-xs">
+                    <button>Nova Ocorrência</button>
+                </a>
+                    <button type="button" id="concluido" class="btn btn-success btn-xs">Concluído</button>
+                    <button type="button" id="pendente" class="btn btn-warning btn-xs">Pendente</button>
                     <button type="button" class="btn btn-xs">Todos</button>
+                   
                 </div>
 
                 <div id="divBusca">
@@ -56,10 +59,7 @@ $result = $conn->query($sql);
                     <img src="img/lupa.png" id="btnBusca" alt="Buscar" width="20px">
                 </div>
             </div>
-            <div class="novo">
-                <a href="TelaOcorrencia.html">
-                    <button>Nova Ocorrência</button>
-                </a>
+           
             </div>
         </div>
 

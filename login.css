@@ -4,7 +4,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    margin-top: 30px;
 }
 
 /* Estilização do corpo */
@@ -22,8 +21,9 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    
     width: 400px;
+    max-width: 90%; /* Garante que o layout fique responsivo */
 }
 
 /* Estilização dos inputs */
@@ -45,8 +45,45 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: rgb(245, 123, 0);
+}
+
+/* Responsividade */
+
+/* Para telas entre 768px e 1200px (Tablets e Notebooks) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .login-container {
+        width: 350px;
+        padding: 25px;
+    }
+}
+
+/* Para telas menores que 768px (Celulares) */
+@media (max-width: 767px) {
+    .login-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    /* Remove o texto do header e a primeira imagem */
+    .header-text,
+    .header img:first-child {
+        display: none;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+/* Para telas maiores que 1200px (PCs grandes) */
+@media (min-width: 1200px) {
+    .login-container {
+        width: 400px;
+        padding: 30px;
+    }
 }

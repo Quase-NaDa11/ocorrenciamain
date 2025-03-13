@@ -1,8 +1,8 @@
 <?php
 include 'conexao.php'; // Conexão com o banco de dados
 
-// Consulta para buscar todos os professores
-$query = "SELECT id, nome, email_institucional, cpf, disciplina FROM Professor";
+// Consulta para buscar todos os coordenadores
+$query = "SELECT id, nome, email FROM Coordenador";
 $result = $conn->query($query);
 ?>
 
@@ -11,7 +11,7 @@ $result = $conn->query($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Professores</title>
+    <title>Lista de Coordenadores</title>
     <link rel="stylesheet" href="listar.css">
 </head>
 <body>
@@ -28,14 +28,12 @@ $result = $conn->query($query);
     </header>
 
     <div class="container">
-        <h1>Lista de Professores</h1>
+        <h1>Lista de Coordenadores</h1>
         <table>
             <thead>
                 <tr>
                     <th>Nome</th>
-                    <th>Email Institucional</th>
-                    <th>CPF</th>
-                    <th>Disciplina</th>
+                    <th>Email</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -43,12 +41,10 @@ $result = $conn->query($query);
                 <?php while ($row = $result->fetch_assoc()) { ?>
                     <tr>
                         <td><?php echo htmlspecialchars($row['nome']); ?></td>
-                        <td><?php echo htmlspecialchars($row['email_institucional']); ?></td>
-                        <td><?php echo htmlspecialchars($row['cpf']); ?></td>
-                        <td><?php echo htmlspecialchars($row['disciplina']); ?></td>
+                        <td><?php echo htmlspecialchars($row['email']); ?></td>
                         <td>
-                            <a href="editar_professor.php?id=<?php echo $row['id']; ?>" class="button edit-button">Editar</a>
-                            <a href="excluir_professor.php?id=<?php echo $row['id']; ?>" class="button delete-button" onclick="return confirm('Tem certeza que deseja excluir este professor?')">Excluir</a>
+                            <a href="editar_coordenador.php?id=<?php echo $row['id']; ?>" class="button edit-button">Alterar</a>
+                            <a href="excluir_coordenador.php?id=<?php echo $row['id']; ?>" class="button delete-button" onclick="return confirm('Tem certeza que deseja excluir este coordenador?')">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>
