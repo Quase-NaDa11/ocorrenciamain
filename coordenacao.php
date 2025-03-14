@@ -33,7 +33,9 @@ $result = $conn->query($query);
       </div>
     </header>
     <main>
-     
+    <a href="geral.html" class="btn btn-warning btn-xs">
+                    <button>Voltar</button>
+                </a>
     <h2>Recebimento de Ocorrências</h2>
         <table border="">
             <thead>

@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($senha, $row['senha'])) {
             $_SESSION['id_professor'] = $row['id'];
             $_SESSION['nome_professor'] = $row['nome'];
-            header("Location: historico.php"); // Redireciona após login
+            header("Location: historico_professor.php"); // Redireciona após login
             exit();
         } else {
             echo "<script>alert('Senha incorreta!'); window.location.href='login_professor.html';</script>";

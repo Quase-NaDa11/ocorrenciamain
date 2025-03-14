@@ -45,12 +45,15 @@ $result = $conn->query($sql);
     <div class="tudo">
         <div class="h1-novo">
             <div class="h1-busca">
-                <div class="btn-group"><a href="TelaOcorrencia.html" class="btn btn-warning btn-xs">
-                    <button>Nova Ocorrência</button>
+            <a href="geral.html" class="btn btn-warning btn-xs">
+                    <button>Voltar</button>
                 </a>
                     <button type="button" id="concluido" class="btn btn-success btn-xs">Concluído</button>
                     <button type="button" id="pendente" class="btn btn-warning btn-xs">Pendente</button>
                     <button type="button" class="btn btn-xs">Todos</button>
+                    <div class="btn-group"><a href="TelaOcorrencia.html" class="btn btn-warning btn-xs">
+                    <button>Nova Ocorrência</button>
+                </a>
                    
                 </div>
 

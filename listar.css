@@ -173,6 +173,8 @@ td a {
         width: 95%;
         padding: 15px;
         margin: 180px auto 20px; /* Maior margem para telas pequenas */
+        display: flex;
+
     }
 
     h1 {
@@ -189,11 +191,14 @@ td a {
     table {
         overflow-x: auto; /* Permite rolagem horizontal */
         -webkit-overflow-scrolling: touch; /* Suporte para rolagem suave em dispositivos móveis */
+        display: flex;
+        flex-direction: column;
     }
 
     th, td {
         max-width: 150px; /* Limita a largura das células para caber na tela */
         overflow: hidden; /* Garante que o conteúdo não transborde */
         text-overflow: ellipsis; /* Adiciona reticências quando o texto for muito grande */
+       
     }
 }
