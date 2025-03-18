@@ -33,29 +33,33 @@ header {
 
 /* Container Principal */
 .main-container {
-    margin-top: 120px; /* Aumentei a margem para descer mais o container */
+    margin-top: 80px;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 1200px;
+   
 }
 
 /* Título */
 h2 {
-    text-align: center;
-    color: #fff;
+    color: #048a23;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 /* Tabela */
+.table-container {
+    overflow-x: auto;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
     background: white;
     border-radius: 8px;
-    overflow: hidden;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -80,7 +84,7 @@ td input {
     box-sizing: border-box;
 }
 
-/* Botão */
+/* Botões */
 button {
     padding: 10px 15px;
     background-color: #048a23;
@@ -96,6 +100,27 @@ button:hover {
     background-color: rgb(245, 123, 0);
 }
 
+/* Botão Voltar */
+.btn-voltar {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #048a23;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+    border: 2px solid transparent;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-voltar:hover {
+    background-color: #d96a00;
+    border-color: white;
+    transform: scale(1.05);
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .main-container {
@@ -107,16 +132,6 @@ button:hover {
     }
 
     th, td {
-        padding: 8px;
-    }
-
-    td input {
-        font-size: 12px;
-        padding: 6px;
-    }
-
-    button {
-        font-size: 12px;
         padding: 8px;
     }
 }
