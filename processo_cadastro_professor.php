@@ -17,11 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"] ?? '';
     $email = $_POST["email"] ?? '';
     $cpf = $_POST["cpf"] ?? '';
-    $disciplina = $_POST["disciplina"] ?? '';
+    $disciplinasContainer = $_POST["disciplina"] ?? '';
     $senha = $_POST["senha"] ?? '';
 
     // Verificar se todos os campos foram preenchidos
-    if (empty($nome) || empty($email) || empty($cpf) || empty($disciplina) || empty($senha)) {
+    if (empty($nome) || empty($email) || empty($cpf) || empty($disciplinasContainer) || empty($senha)) {
         die("Erro: Todos os campos são obrigatórios.");
     }
 
