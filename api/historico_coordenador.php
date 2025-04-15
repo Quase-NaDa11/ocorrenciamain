@@ -25,19 +25,19 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Ocorrências</title>
-    <link rel="stylesheet" href="historico.css">
+    <link rel="stylesheet" href="/ocorrenciamain/public/historico.css">
 </head>
 <body>
 
 <header>
     <div class="logo-container">
-        <img src="img/brasao-do-ceara.png" alt="Brasão do Ceará" width="70px">
+        <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="Brasão do Ceará" width="70px">
         <p class="texto" style="color: white">
             GOVERNO DO ESTADO DO CEARÁ <br>
             19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br>
             ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE
         </p>
-        <img src="img/escola-removebg-preview.png" alt="Logo da Escola" width="100px">
+        <img src="/ocorrenciamain/img/escola-removebg-preview.png" alt="Logo da Escola" width="100px">
     </div>
 </header>
 
@@ -45,13 +45,13 @@ $result = $conn->query($sql);
     <div class="tudo">
         <div class="h1-novo">
             <div class="h1-busca">
-            <a href="geral.html" class="btn btn-warning btn-xs">
+            <a href="/ocorrenciamain/public/geral.html" class="btn btn-warning btn-xs">
                     <button>Voltar</button>
                 </a>
                     <button type="button" id="concluido" class="btn btn-success btn-xs">Concluído</button>
                     <button type="button" id="pendente" class="btn btn-warning btn-xs">Pendente</button>
                     <button type="button" class="btn btn-xs">Todos</button>
-                    <div class="btn-group"><a href="TelaOcorrencia.html" class="btn btn-warning btn-xs">
+                    <div class="btn-group"><a href="/ocorrenciamain/public/TelaOcorrencia.html" class="btn btn-warning btn-xs">
                     <button>Nova Ocorrência</button>
                 </a>
                    
@@ -59,7 +59,7 @@ $result = $conn->query($sql);
 
                 <div id="divBusca">
                     <input type="text" id="txtBusca" placeholder="Buscar...">
-                    <img src="img/lupa.png" id="btnBusca" alt="Buscar" width="20px">
+                    <img src="/ocorrenciamain/img/lupa.png" id="btnBusca" alt="Buscar" width="20px">
                 </div>
             </div>
            
@@ -97,7 +97,7 @@ $result = $conn->query($sql);
     </div>
 </main>
 
-<script src="historicoscript.js"></script>
+<script src="/ocorrenciamain/historicoscript.js"></script>
 
 </body>
 </html>

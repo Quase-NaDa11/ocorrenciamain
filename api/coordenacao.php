@@ -21,24 +21,24 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recebimento de Ocorrências</title>
-    <link rel="stylesheet" href="historico2.css">
+    <link rel="stylesheet" href="/ocorrenciamain/public/historico2.css">
 </head>
 <body>
 
 <header>
     <div class="logo-container">
-        <img src="img/brasao-do-ceara.png" alt="Brasão do Ceará" width="70px">
+        <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="Brasão do Ceará" width="70px">
         <p class="texto">
             GOVERNO DO ESTADO DO CEARÁ <br>
             19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br>
             ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE
         </p>
-        <img src="img/escola-removebg-preview.png" alt="Logo da Escola" width="100px">
+        <img src="/ocorrenciamain/img/escola-removebg-preview.png" alt="Logo da Escola" width="100px">
     </div>
 </header>
 
 <main class="main-container">
-    <a href="geral.html" class="btn-voltar">Voltar</a>
+    <a href="/ocorrenciamain/public/geral.html" class="btn-voltar">Voltar</a>
     
     <h2>Recebimento de Ocorrências</h2>
 

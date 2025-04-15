@@ -12,23 +12,27 @@ $result = $conn->query($query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Coordenadores</title>
-    <link rel="stylesheet" href="listar.css">
+    <link rel="stylesheet" href="/ocorrenciamain/public/listar.css">
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <img src="img/brasao-do-ceara.png" alt="Brasão do Ceará" width="70px" />
+            <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="Brasão do Ceará" width="70px" />
             <p class="texto" style="color: white">
                 GOVERNO DO ESTADO DO CEARÁ <br />
                 19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
                 ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE
             </p>
-            <img src="img/escola-removebg-preview.png" alt="Logo da Escola" width="100px" />
+            <img src="/ocorrenciamain/img/escola-removebg-preview.png" alt="Logo da Escola" width="100px" />
         </div>
     </header>
 
     <div class="container">
+    <a href="/ocorrenciamain/public/geral.html" class="btn btn-warning btn-xs">
+    <button>Voltar</button></a>
         <h1>Lista de Coordenadores</h1>
+        
+                </a>
         <table>
             <thead>
                 <tr>

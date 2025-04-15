@@ -23,10 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: historico_professor.php"); // Redireciona após login
             exit();
         } else {
-            echo "<script>alert('Senha incorreta!'); window.location.href='login_professor.html';</script>";
+            echo "<script>alert('Senha incorreta!'); window.location.href='/ocorrenciamain/public/login_professor.html';</script>";
         }
     } else {
-        echo "<script>alert('E-mail não encontrado!'); window.location.href='login_professor.html';</script>";
+        echo "<script>alert('E-mail não encontrado!'); window.location.href='/ocorrenciamain/public/login_professor.html';</script>";
     }
 
     $stmt->close();
