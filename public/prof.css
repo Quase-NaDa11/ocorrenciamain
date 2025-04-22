@@ -55,15 +55,7 @@ header {
 }
 
 /* Container do cadastro */
-.cadastro-container {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
-    
-    width: 100%;
-    max-width: 400px;
-}
+
 
 h2 {
     margin-bottom: 20px;
@@ -234,18 +226,44 @@ button:hover {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     height: 30px; /* Garantir que os itens tenham uma altura consistente */
   }
-  .button{
-    
+  
+   
+/* Garantir que a container tenha um contexto para o botão */
+
+
+
+/* Container do cadastro */
+.cadastro-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    position: relative; /* Permite usar 'position: relative' para o botão */
+}
+
+/* Botão de Voltar */
+.btn-voltar {
     display: inline-block;
+   
+    text-align: center;
     text-decoration: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    
+   
     color: white;
-    background-color: #048a23;
     border-radius: 5px;
-    transition: 0.3s ease-in-out;
-    border: 2px solid transparent;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    width: auto; /* Largura automática para o botão */
+    margin-bottom: 20px; /* Espaço abaixo do botão */
+    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Faz o botão considerar o padding e borda dentro da largura */
+}
+
+
+
+/* Contêiner para manter o botão no topo à esquerda da container */
+.cadastro-container .btn-container {
+    display: flex;
+    justify-content: flex-start; /* Alinha o botão à esquerda */
+    margin-bottom: 20px; /* Espaço abaixo do botão */
 }

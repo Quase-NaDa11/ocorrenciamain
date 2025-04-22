@@ -45,24 +45,21 @@ $result = $conn->query($sql);
     <div class="tudo">
         <div class="h1-novo">
             <div class="h1-busca">
-            <a href="/ocorrenciamain/public/geral.html" class="btn btn-warning btn-xs">
+                <a href="/ocorrenciamain/public/geral.html" class="btn btn-warning btn-xs">
                     <button>Voltar</button>
                 </a>
-                    <button type="button" id="concluido" class="btn btn-success btn-xs">Concluído</button>
-                    <button type="button" id="pendente" class="btn btn-warning btn-xs">Pendente</button>
-                    <button type="button" class="btn btn-xs">Todos</button>
-                    <div class="btn-group"><a href="/ocorrenciamain/public/TelaOcorrencia.html" class="btn btn-warning btn-xs">
-                    <button>Nova Ocorrência</button>
-                </a>
-                   
+                <button type="button" id="concluido">Concluído</button>
+                <button type="button" id="pendente">Pendente</button>
+                <button type="button" id="todos">Todos</button>
+                <div class="btn-group">
+                    <a href="/ocorrenciamain/public/TelaOcorrencia2.html" class="btn btn-warning btn-xs">
+                        <button>Nova Ocorrência</button>
+                    </a>
                 </div>
-
                 <div id="divBusca">
                     <input type="text" id="txtBusca" placeholder="Buscar...">
                     <img src="/ocorrenciamain/img/lupa.png" id="btnBusca" alt="Buscar" width="20px">
                 </div>
-            </div>
-           
             </div>
         </div>
 
@@ -78,16 +75,14 @@ $result = $conn->query($sql);
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table-body">
                         <?php while ($row = $result->fetch_assoc()) { ?>
-                        <tr>
+                        <tr data-status="<?php echo htmlspecialchars($row['status']); ?>">
                             <td><?php echo htmlspecialchars($row['estudante']); ?></td>
                             <td><?php echo htmlspecialchars($row['situacao']); ?></td>
                             <td><?php echo htmlspecialchars($row['data']); ?></td>
                             <td><?php echo htmlspecialchars($row['professor']); ?></td>
-                            <td data-estado="<?php echo htmlspecialchars($row['status']); ?>">
-                                <?php echo htmlspecialchars($row['status']); ?>
-                            </td>
+                            <td><?php echo htmlspecialchars($row['status']); ?></td>
                         </tr>
                         <?php } ?>
                     </tbody>
@@ -97,7 +92,52 @@ $result = $conn->query($sql);
     </div>
 </main>
 
-<script src="/ocorrenciamain/historicoscript.js"></script>
+<script>
+    // Filtra os itens com base no status
+    document.getElementById("concluido").addEventListener("click", function() {
+        filterTable("concluido");
+    });
+
+    document.getElementById("pendente").addEventListener("click", function() {
+        filterTable("pendente");
+    });
+
+    document.getElementById("todos").addEventListener("click", function() {
+        filterTable("todos");
+    });
+
+    // Função que aplica o filtro
+    function filterTable(status) {
+        let rows = document.querySelectorAll("#table-body tr");
+
+        rows.forEach(function(row) {
+            if (status === "todos") {
+                row.style.display = "";
+            } else {
+                if (row.getAttribute("data-status") === status) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        });
+    }
+
+    // Filtro de busca no nome
+    document.getElementById("txtBusca").addEventListener("input", function() {
+        let searchTerm = this.value.toLowerCase();
+        let rows = document.querySelectorAll("#table-body tr");
+
+        rows.forEach(function(row) {
+            let name = row.querySelector("td").textContent.toLowerCase();
+            if (name.includes(searchTerm)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

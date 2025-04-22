@@ -28,8 +28,8 @@ $result = $conn->query($query);
     </header>
 
     <div class="container">
-    <a href="/ocorrenciamain/public/geral.html" class="btn btn-warning btn-xs">
-    <button>Voltar</button></a>
+    <a href="/ocorrenciamain/public/geral.html" class="btn-voltar">Voltar</a>
+
         <h1>Lista de Coordenadores</h1>
         
                 </a>

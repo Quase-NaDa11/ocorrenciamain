@@ -12,7 +12,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
     background-color: #048a23;
 }
 
@@ -46,7 +45,6 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
 }
 
 /* Estilo do container do formulário */
@@ -55,9 +53,9 @@ main {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 90%;
-    max-width: 450px;
+    width: 100%;
+    max-width: 400px;
+    position: relative; /* Permite usar 'position: relative' para o botão */
 }
 
 /* Título */
@@ -125,4 +123,26 @@ button:hover {
     transition: 0.3s ease-in-out;
     border: 2px solid transparent;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.btn-voltar {
+    display: inline-block;
+   
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    width: auto; /* Largura automática para o botão */
+    margin-bottom: 20px; /* Espaço abaixo do botão */
+    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Faz o botão considerar o padding e borda dentro da largura */
+}
+
+
+
+/* Contêiner para manter o botão no topo à esquerda da container */
+.cadastro-container .btn-container {
+    display: flex;
+    justify-content: flex-start; /* Alinha o botão à esquerda */
+    margin-bottom: 20px; /* Espaço abaixo do botão */
 }

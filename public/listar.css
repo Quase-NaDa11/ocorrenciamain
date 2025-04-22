@@ -54,7 +54,7 @@ header {
     margin: 80px auto 20px; /* Ajustei a margem superior para compensar o cabeçalho fixo */
     display: flex;
     flex-direction: column;
-    align-items: center;
+position: relative;
     box-sizing: border-box; /* Faz o padding e border não afetarem a largura total */
 }
 
@@ -201,4 +201,25 @@ td a {
         text-overflow: ellipsis; /* Adiciona reticências quando o texto for muito grande */
        
     }
+}
+/* Estilo para o botão de Voltar */
+.btn-voltar {
+    position: absolute; /* Posiciona o botão dentro da container */
+    top: 20px; /* Distância de 20px do topo da container */
+    left: 20px; /* Distância de 20px da borda esquerda da container */
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #048a23; /* Cor do botão de voltar */
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    width: auto; /* Largura automática para o botão */
+    transition: background-color 0.3s ease;
+    z-index: 1; /* Garante que o botão fique acima do conteúdo da container */
+    box-sizing: border-box; /* Considera o padding e borda dentro da largura */
+}
+
+.btn-voltar:hover {
+    background-color: #fb8c00; /* Cor mais escura no hover */
 }

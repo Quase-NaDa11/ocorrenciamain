@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssssisss", $estudante, $aula, $situacao, $turma, $professor_id, $data, $descricao, $encaminhamento);
 
         if ($stmt->execute()) {
-           header("Location: historico_professor.php");
+           header("Location: historico_coordenador.php");
            exit();
         } else {
             echo "Erro ao cadastrar: " . $stmt->error;
