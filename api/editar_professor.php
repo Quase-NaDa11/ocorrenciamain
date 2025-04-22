@@ -63,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </header>
 
     <div class="container">
+    <a href="listar_professores.php" class="btn-voltar">Voltar</a>
         <h1>Editar Professor</h1>
         <form method="POST">
             <label for="nome">Nome:</label>

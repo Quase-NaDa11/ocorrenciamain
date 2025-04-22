@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </header>
 
     <div class="container">
+    <a href="listar_coordenadores.php" class="btn-voltar">Voltar</a>
         <h1>Editar Coordenador</h1>
         <form method="POST">
             <label for="nome">Nome:</label>

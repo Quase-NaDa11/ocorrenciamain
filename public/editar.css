@@ -42,11 +42,14 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     margin: 20px auto 0;
+    position: relative;
+    
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 /* Estilos do formulário */
@@ -146,4 +149,20 @@ th {
     button, .delete-button {
         width: 100%;
     }
+}
+.btn-voltar {
+    position: absolute; /* Posiciona o botão dentro da container */
+    top: 20px; /* Distância de 20px do topo da container */
+    left: 20px; /* Distância de 20px da borda esquerda da container */
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #048a23; /* Cor do botão de voltar */
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    width: auto; /* Largura automática para o botão */
+    transition: background-color 0.3s ease;
+    z-index: 1; /* Garante que o botão fique acima do conteúdo da container */
+    box-sizing: border-box; /* Considera o padding e borda dentro da largura */
 }

@@ -220,6 +220,3 @@ td a {
     box-sizing: border-box; /* Considera o padding e borda dentro da largura */
 }
 
-.btn-voltar:hover {
-    background-color: #fb8c00; /* Cor mais escura no hover */
-}
