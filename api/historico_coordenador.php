@@ -43,27 +43,42 @@ $result = $conn->query($sql);
 
 <main>
     <div class="tudo">
-        <div class="h1-novo">
-            <div class="h1-busca">
-                <a href="/ocorrenciamain/public/geral.html" class="btn btn-warning btn-xs">
-                    <button>Voltar</button>
-                </a>
-                <button type="button" id="concluido">Concluído</button>
-                <button type="button" id="pendente">Pendente</button>
-                <button type="button" id="todos">Todos</button>
-                <div class="btn-group">
-                    <a href="/ocorrenciamain/public/TelaOcorrencia2.html" class="btn btn-warning btn-xs">
-                        <button>Nova Ocorrência</button>
-                    </a>
-                </div>
-                <div id="divBusca">
-                    <input type="text" id="txtBusca" placeholder="Buscar...">
-                    <img src="/ocorrenciamain/img/lupa.png" id="btnBusca" alt="Buscar" width="20px">
-                </div>
-            </div>
-        </div>
+   <!-- Botão Voltar -->
+<a href="/ocorrenciamain/public/geral.html" id="voltar">
+  <button>Voltar</button>
+</a>
+
+<!-- Botões Concluído, Pendente, Todos -->
+<div class="h1-busca">
+    
+  <button type="button" id="concluido">Concluído</button>
+  <button type="button" id="pendente">Pendente</button>
+  <button type="button" id="todos">Todos</button>
+</div>
+
+<!-- Campo de Nova Ocorrência e Busca -->
+<div class="h1-novo">
+  <!-- Nova Ocorrência -->
+  <a href="/ocorrenciamain/public/TelaOcorrencia2.html">
+    <button>Nova Ocorrência</button>
+  </a>
+  
+  <!-- Caixa de busca -->
+  <div id="divBusca">
+    <input type="text" id="txtBusca" placeholder="Buscar...">
+    <img src="/ocorrenciamain/img/lupa.png" id="btnBusca" alt="Buscar" width="20px">
+  </div>
+</div>
+
+
+
+
+</div>
+
 
         <div class="main-container">
+            
+
             <div class="table">
                 <table>
                     <thead>

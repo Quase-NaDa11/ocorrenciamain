@@ -1,4 +1,4 @@
-/* Garante que a página ocupa toda a altura e se adapta bem */
+/* Estilos gerais */
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
@@ -7,7 +7,7 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-color: #048a23;
+  background-color: #f5f5f5;
 }
 
 /* Cabeçalho fixo no topo */
@@ -16,7 +16,7 @@ header {
   text-align: center;
   background-color: #01923d;
   padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Logo e texto centralizados */
@@ -25,32 +25,34 @@ header {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   text-align: center;
 }
 
 .logo-container p {
-  font-size: 14px;
+  font-size: 12px; /* Tamanho do texto reduzido */
   color: white;
+  margin: 0;
 }
 
 /* Estilização da busca */
 #divBusca {
   background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-  width: 300px;
+  border-radius: 25px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  width: 250px;
   display: flex;
   align-items: center;
   padding: 5px;
+  margin-top: 10px;
 }
 
 #txtBusca {
   background-color: transparent;
-  padding-left: 5px;
+  padding-left: 10px;
   outline: none;
   color: #000;
-  font-size: 16px;
+  font-size: 14px;
   border: none;
   height: 30px;
   width: 100%;
@@ -64,67 +66,53 @@ header {
 .h1-busca {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 20px 0;
+  
+  flex-wrap: wrap;
 }
 
 .h1-novo {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
-  max-width: 1000px;
   margin: 10px auto;
-  gap: 20px; /* Espaço entre os elementos */
+
+  flex-wrap: wrap; /* Permite quebra para dispositivos menores */
 }
 
-.novo {
-  margin-left: 40px; /* Distância extra para destacar o botão */
-}
-
-.novo button {
-
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
+/* Botões de filtro */
+button {
+  padding: 12px 20px;
   background-color: #048a23;
+  color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 14px;
+  margin: 5px;
   transition: all 0.3s ease;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.novo button:hover {
-  background: linear-gradient(90deg, #ff9c00, #ff7300);
-  transform: scale(1.05);
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Botões */
-button {
-  padding: 10px 15px;
-  background-color: #048a23;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  white-space: nowrap; /* Impede que o texto quebre */
 }
 
 button:hover {
-  background-color: rgb(245, 123, 0);
+  background-color: #035f17;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Layout principal */
 main {
-  margin-top: 20px;
+  margin-top: 30px;
   border-radius: 8px;
   background-color: #fff;
   width: 95%;
   max-width: 1200px;
+  
 }
 
 /* Container da tabela */
@@ -134,7 +122,7 @@ main {
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin: 20px auto;
-  overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
+  overflow-x: auto;
 }
 
 /* Estilização da tabela */
@@ -146,60 +134,150 @@ main {
 table {
   width: 100%;
   border-collapse: collapse;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  border: 1px solid #ddd;
+  padding: 12px;
   text-align: center;
   font-size: 16px;
 }
 
+th {
+  background-color: #f4f4f4;
+  color: #333;
+  font-weight: bold;
+}
+
 /* Responsividade para telas menores */
 @media screen and (max-width: 768px) {
-  .h1-busca {
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+  /* Logo */
+  .logo-container img {
+    width: 50px;
   }
 
+  .logo-container p {
+    font-size: 10px;
+  }
+
+  /* Estilização da busca */
+  #divBusca {
+    width: 220px;
+  }
+
+  #txtBusca {
+    font-size: 12px;
+  }
+
+  /* Ajustar botões para ficarem empilhados no mobile */
+  .h1-busca {
+    flex-direction: row; /* Coloca os botões na mesma linha */
+  }
+
+  .h1-novo {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  /* Ajuste no tamanho dos botões */
+  button {
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+
+  /* Ajustes na tabela */
   .table {
-      overflow-x: auto;
+    overflow-x: auto;
   }
 
   table, thead, tbody, th, td, tr {
-      display: block;
+    display: block;
   }
 
   thead {
-      display: none;
+    display: none;
   }
 
   tr {
-      margin-bottom: 10px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      background: #fff;
-      padding: 10px;
-      border-radius: 5px;
+    margin-bottom: 10px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
   }
 
   td {
-      position: relative;
-      padding-left: 50%;
-      text-align: left;
-      display: flex;
-      align-items: center;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+    display: flex;
+    align-items: center;
   }
 
   td::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 10px;
-      font-weight: bold;
-      color: #333;
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+}
+
+/* Ajustes para telas muito pequenas (celulares muito pequenos) */
+@media screen and (max-width: 480px) {
+  /* Ocultar a primeira imagem */
+  .logo-container img:first-child {
+    display: none;
   }
 
-  button {
-      width: 100%;
+  /* Exibir apenas a segunda imagem */
+  .logo-container img:nth-child(2) {
+    display: block;
+    width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
   }
+
+  /* Ajuste no botão para telas pequenas */
+  button {
+    font-size: 14px; /* Aumentar o tamanho do botão */
+    padding: 10px 20px; /* Aumentar o padding do botão */
+    min-width: 120px; /* Definir a largura mínima */
+  }
+
+  /* Garantir que os botões fiquem na mesma linha */
+  .h1-busca {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  /* Ajuste de tamanho do campo de busca e nova ocorrência */
+  .h1-novo {
+    flex-wrap: nowrap;
+  }
+
+  #btnBusca {
+    margin-left: 10px;
+  }
+}
+
+/* Botão Voltar */
+#voltar {
+  position: absolute;
+  top: 10px; /* Colocando mais para cima */
+  left: 50%; /* Centralizando horizontalmente */
+  transform: translateX(-50%); /* Ajuste para garantir a centralização */
+  padding: 12px 20px;
+  background-color: #048a23;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#voltar:hover {
+  background-color: #035f17;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
