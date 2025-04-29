@@ -7,7 +7,8 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #048a23;
+  overflow-x: hidden; /* Impede o transbordamento lateral */
 }
 
 /* Cabeçalho fixo no topo */
@@ -15,8 +16,16 @@ header {
   width: 100%;
   text-align: center;
   background-color: #01923d;
-  padding: 10px 0;
+  padding: 15px 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Fixar no topo */
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 /* Logo e texto centralizados */
@@ -24,67 +33,54 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   text-align: center;
 }
 
+.logo-container img {
+  width: 50px;
+}
+
 .logo-container p {
-  font-size: 12px; /* Tamanho do texto reduzido */
+  font-size: 14px;
   color: white;
   margin: 0;
 }
 
-/* Estilização da busca */
-#divBusca {
-  background-color: #fff;
-  border-radius: 25px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-  width: 250px;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  margin-top: 10px;
-}
-
-#txtBusca {
-  background-color: transparent;
-  padding-left: 10px;
-  outline: none;
-  color: #000;
-  font-size: 14px;
-  border: none;
-  height: 30px;
+/* Layout principal */
+main {
+  margin-top: 130px; /* Distância do topo para o conteúdo não sobrepor o cabeçalho fixo */
   width: 100%;
-}
-
-#btnBusca {
-  cursor: pointer;
+  max-width: 1200px; /* Limita a largura máxima do conteúdo */
+  padding: 30px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto; /* Centraliza o conteúdo */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Layout dos botões e busca */
-.h1-busca {
+ .h1-novo {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
-  max-width: 900px;
-  margin: 20px 0;
-  
-  flex-wrap: wrap;
+  /* Espaço entre os botões */
+  flex-wrap: wrap; /* Permite a quebra para telas menores */
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-
-.h1-novo {
+.h1-busca{
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
-  margin: 10px auto;
-
-  flex-wrap: wrap; /* Permite quebra para dispositivos menores */
+  /* Espaço entre os botões */
+  flex-wrap: wrap; /* Permite a quebra para telas menores */
+  margin-top: 20px;
 }
 
-/* Botões de filtro */
+/* Estilo para todos os botões */
 button {
   padding: 12px 20px;
   background-color: #048a23;
@@ -96,8 +92,11 @@ button {
   margin: 5px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  white-space: nowrap; /* Impede que o texto quebre */
+  white-space: nowrap;
+  width: 200px; /* Largura fixa para todos os botões */
+  text-align: center; /* Garantir que o texto fique centralizado */
 }
+
 
 button:hover {
   background-color: #035f17;
@@ -105,27 +104,18 @@ button:hover {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Layout principal */
-main {
-  margin-top: 30px;
-  border-radius: 8px;
-  background-color: #fff;
-  width: 95%;
-  max-width: 1200px;
-  
+/* Ajustes para telas pequenas */
+@media screen and (max-width: 768px) {
+  .h1-busca, .h1-novo {
+    flex-direction: column; /* Coloca os botões em uma coluna */
+    gap: 10px;
+  }
+  .h1-busca button, .h1-novo button {
+    width: 200px; /* Garantir que a largura seja consistente também em telas menores */
+  }
 }
 
-/* Container da tabela */
-.main-container {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
-  overflow-x: auto;
-}
-
-/* Estilização da tabela */
+/* Layout da Tabela */
 .table {
   width: 100%;
   overflow-x: auto;
@@ -135,11 +125,13 @@ table {
   width: 100%;
   border-collapse: collapse;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 20px;
 }
 
 th, td {
   border: 1px solid #ddd;
-  padding: 12px;
+  padding: 15px;
   text-align: center;
   font-size: 16px;
 }
@@ -150,121 +142,12 @@ th {
   font-weight: bold;
 }
 
-/* Responsividade para telas menores */
-@media screen and (max-width: 768px) {
-  /* Logo */
-  .logo-container img {
-    width: 50px;
-  }
-
-  .logo-container p {
-    font-size: 10px;
-  }
-
-  /* Estilização da busca */
-  #divBusca {
-    width: 220px;
-  }
-
-  #txtBusca {
-    font-size: 12px;
-  }
-
-  /* Ajustar botões para ficarem empilhados no mobile */
-  .h1-busca {
-    flex-direction: row; /* Coloca os botões na mesma linha */
-  }
-
-  .h1-novo {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  /* Ajuste no tamanho dos botões */
-  button {
-    font-size: 12px;
-    padding: 10px 15px;
-  }
-
-  /* Ajustes na tabela */
-  .table {
-    overflow-x: auto;
-  }
-
-  table, thead, tbody, th, td, tr {
-    display: block;
-  }
-
-  thead {
-    display: none;
-  }
-
-  tr {
-    margin-bottom: 10px;
-    background: #fff;
-    padding: 10px;
-    border-radius: 5px;
-  }
-
-  td {
-    position: relative;
-    padding-left: 50%;
-    text-align: left;
-    display: flex;
-    align-items: center;
-  }
-
-  td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 10px;
-    font-weight: bold;
-    color: #333;
-  }
-}
-
-/* Ajustes para telas muito pequenas (celulares muito pequenos) */
-@media screen and (max-width: 480px) {
-  /* Ocultar a primeira imagem */
-  .logo-container img:first-child {
-    display: none;
-  }
-
-  /* Exibir apenas a segunda imagem */
-  .logo-container img:nth-child(2) {
-    display: block;
-    width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
-  }
-
-  /* Ajuste no botão para telas pequenas */
-  button {
-    font-size: 14px; /* Aumentar o tamanho do botão */
-    padding: 10px 20px; /* Aumentar o padding do botão */
-    min-width: 120px; /* Definir a largura mínima */
-  }
-
-  /* Garantir que os botões fiquem na mesma linha */
-  .h1-busca {
-    justify-content: space-between;
-    flex-wrap: nowrap;
-  }
-
-  /* Ajuste de tamanho do campo de busca e nova ocorrência */
-  .h1-novo {
-    flex-wrap: nowrap;
-  }
-
-  #btnBusca {
-    margin-left: 10px;
-  }
-}
-
-/* Botão Voltar */
+/* Estilização do botão voltar */
 #voltar {
-  position: absolute;
-  top: 10px; /* Colocando mais para cima */
-  left: 50%; /* Centralizando horizontalmente */
-  transform: translateX(-50%); /* Ajuste para garantir a centralização */
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 12px 20px;
   background-color: #048a23;
   color: white;
@@ -274,10 +157,112 @@ th {
   font-size: 14px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 200px; /* Largura fixa para o botão voltar */
 }
 
 #voltar:hover {
   background-color: #035f17;
   transform: scale(1.05);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade para telas menores */
+header {
+  padding: 10px 15px;
+}
+
+/* Ajuste nas imagens do cabeçalho */
+.logo-container img {
+  width: 50px;
+}
+.test{
+  display: flex;
+}
+.logo-container p {
+  font-size: 10px;
+}
+
+/* Ajustes nas tabelas para telas pequenas */
+table {
+  font-size: 14px; /* Ajustar o tamanho da fonte */
+}
+
+/* Botões responsivos */
+ .h1-novo {
+  margin-bottom: 30px;
+}
+
+.h1-busca button, .h1-novo button {
+  width: 200px; /* Largura fixa também para telas menores */
+}
+
+/* Ajuste no botão voltar */
+#voltar {
+  width: 200px; /* Largura fixa também para o botão voltar */
+  padding: 15px;
+}
+
+@media screen and (max-width: 480px) {
+  /* Alterações para telas muito pequenas */
+  .logo-container img {
+    width: 40px;
+  }
+  main{
+    margin-top: 50px;
+  }
+
+  .logo-container p {
+    font-size: 9px;
+  }
+
+  /* Ajuste de botões para telas muito pequenas */
+  button {
+    font-size: 14px;
+    padding: 10px 20px;
+    width: 200px; /* Largura fixa para os botões mesmo em telas muito pequenas */
+  }
+
+  /* Ocultar a primeira imagem e mostrar a segunda imagem no celular */
+  .logo-container img:first-child {
+    display: none; /* Esconde a primeira imagem */
+  }
+
+  /* Exibir a segunda imagem no celular */
+  .logo-container img:nth-child(2) {
+    display: block; /* Garante que a segunda imagem será exibida */
+  }
+
+  /* Esconder o texto */
+  .logo-container p {
+    display: none; /* Esconde o texto no celular */
+  }
+}
+
+/* Estilos para a caixa de busca */
+#divBusca {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative; /* Adiciona posição relativa para o ícone dentro */
+  margin-left: 10px;
+}
+
+#txtBusca {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  margin: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  width: 200px; /* Largura fixa para todos os botões */
+}
+
+#btnBusca {
+  position: absolute; /* A posição absoluta coloca o ícone dentro da caixa de busca */
+  right: 10px; /* Coloca a lupa no final da caixa */
+  cursor: pointer;
+  font-size: 18px; /* Ajuste o tamanho do ícone */
+  z-index: 2;
 }

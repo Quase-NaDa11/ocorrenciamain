@@ -44,26 +44,27 @@ $result = $conn->query($sql);
 <main>
     <div class="tudo">
         <!-- Botões Concluído, Pendente, Todos -->
+        <div class="h1-novo">
+    <!-- Nova Ocorrência -->
+    <a href="/ocorrenciamain/public/TelaOcorrencia.html">
+      <button>Nova Ocorrência</button>
+    </a>
+    
+    <!-- Caixa de busca -->
+  </div>
 <div class="h1-busca">
     
     <button type="button" id="concluido">Concluído</button>
     <button type="button" id="pendente">Pendente</button>
     <button type="button" id="todos">Todos</button>
-  </div>
-  
-  <!-- Campo de Nova Ocorrência e Busca -->
-  <div class="h1-novo">
-    <!-- Nova Ocorrência -->
-    <a href="/ocorrenciamain/public/TelaOcorrencia2.html">
-      <button>Nova Ocorrência</button>
-    </a>
-    
-    <!-- Caixa de busca -->
     <div id="divBusca">
       <input type="text" id="txtBusca" placeholder="Buscar...">
       <img src="/ocorrenciamain/img/lupa.png" id="btnBusca" alt="Buscar" width="20px">
     </div>
   </div>
+  
+  <!-- Campo de Nova Ocorrência e Busca -->
+ 
   
   
   

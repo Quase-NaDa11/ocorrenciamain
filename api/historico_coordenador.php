@@ -41,68 +41,67 @@ $result = $conn->query($sql);
     </div>
 </header>
 
+
 <main>
-    <div class="tudo">
-   <!-- Botão Voltar -->
-<a href="/ocorrenciamain/public/geral.html" id="voltar">
-  <button>Voltar</button>
-</a>
+  <div class="tudo">
+    <!-- Botões Concluído, Pendente, Todos -->
+    <div class="h1-novo">
+      <!-- Nova Ocorrência -->
+      <a href="/ocorrenciamain/public/geral.html">
+        <button>Voltar</button>
+      </a>
+      <a href="/ocorrenciamain/public/TelaOcorrencia2.html">
+        <button>Nova Ocorrência</button>
+      </a>
 
-<!-- Botões Concluído, Pendente, Todos -->
-<div class="h1-busca">
+      <!-- Botão Voltar -->
+     
+    </div>
     
-  <button type="button" id="concluido">Concluído</button>
-  <button type="button" id="pendente">Pendente</button>
-  <button type="button" id="todos">Todos</button>
-</div>
+    <div class="h1-busca">
+      <button type="button" id="concluido">Concluído</button>
+      <button type="button" id="pendente">Pendente</button>
+      <button type="button" id="todos">Todos</button>
+      <div id="divBusca">
+      <input type="text" id="txtBusca" placeholder="Buscar...">
+      <img src="/ocorrenciamain/img/lupa.png" id="btnBusca" alt="Buscar" width="20px">
+    </div>
+    </div>
 
-<!-- Campo de Nova Ocorrência e Busca -->
-<div class="h1-novo">
-  <!-- Nova Ocorrência -->
-  <a href="/ocorrenciamain/public/TelaOcorrencia2.html">
-    <button>Nova Ocorrência</button>
-  </a>
-  
-  <!-- Caixa de busca -->
-  <div id="divBusca">
-    <input type="text" id="txtBusca" placeholder="Buscar...">
-    <img src="/ocorrenciamain/img/lupa.png" id="btnBusca" alt="Buscar" width="20px">
-  </div>
-</div>
+    <!-- Botões Nova Ocorrência e Voltar -->
+   
+    
 
+   
+
+  </div> 
 
 
 
-</div>
-
-
-        <div class="main-container">
-            
-
-            <div class="table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Problema</th>
-                            <th>Data</th>
-                            <th>Professor</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body">
-                        <?php while ($row = $result->fetch_assoc()) { ?>
-                        <tr data-status="<?php echo htmlspecialchars($row['status']); ?>">
-                            <td><?php echo htmlspecialchars($row['estudante']); ?></td>
-                            <td><?php echo htmlspecialchars($row['situacao']); ?></td>
-                            <td><?php echo htmlspecialchars($row['data']); ?></td>
-                            <td><?php echo htmlspecialchars($row['professor']); ?></td>
-                            <td><?php echo htmlspecialchars($row['status']); ?></td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
+    <div class="main-container">
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Problema</th>
+                        <th>Data</th>
+                        <th>Professor</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <?php while ($row = $result->fetch_assoc()) { ?>
+                    <tr data-status="<?php echo htmlspecialchars($row['status']); ?>">
+                        <td><?php echo htmlspecialchars($row['estudante']); ?></td>
+                        <td><?php echo htmlspecialchars($row['situacao']); ?></td>
+                        <td><?php echo htmlspecialchars($row['data']); ?></td>
+                        <td><?php echo htmlspecialchars($row['professor']); ?></td>
+                        <td><?php echo htmlspecialchars($row['status']); ?></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </main>
@@ -156,6 +155,7 @@ $result = $conn->query($sql);
 
 </body>
 </html>
+
 
 <?php
 $conn->close();

@@ -19,7 +19,7 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.texto{
+.texto {
     color: white;
 }
 
@@ -30,11 +30,36 @@ header {
     gap: 20px;
 }
 
+.logo-container img:first-child {
+    display: block; /* Exibe a primeira imagem por padrão */
+}
+
+.logo-container img:nth-child(2) {
+    display: none; /* Esconde a segunda imagem por padrão */
+}
+
 .logo-container p {
     font-size: 14px;
     color: #333;
 }
 
+/* Estilos responsivos para telas menores que 480px (Celulares) */
+@media (max-width: 479px) {
+    /* Esconde a primeira imagem e o texto, deixando apenas a segunda imagem */
+    .logo-container img:first-child {
+        display: none; /* Esconde a primeira imagem */
+    }
+
+    .logo-container p {
+        display: none; /* Esconde o texto */
+    }
+
+    .logo-container img:nth-child(2) {
+        display: block; /* Exibe a segunda imagem */
+    }
+}
+
+/* Estilos para a main-container */
 .main-container {
     width: 100%;
     max-width: 800px;
@@ -173,30 +198,4 @@ main {
     input, select, textarea {
         font-size: 14px;
     }
-    
-}
-
-/* Para telas menores que 480px (Celulares) */
-@media (max-width: 479px) {
-    .main-container {
-        max-width: 95%;
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 22px;
-    }
-
-    button {
-        font-size: 14px;
-    }
-
-    input, select, textarea {
-        font-size: 14px;
-    }
-
-    label {
-        font-size: 14px;
-    }
-   
 }
