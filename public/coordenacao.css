@@ -4,51 +4,71 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
-}
-
-/* Configurações do corpo */
-body {
+  }
+  
+  /* Configurações do corpo */
+  body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #048a23;
-}
-
-/* Cabeçalho */
-header {
+  }
+  
+  /* Cabeçalho */
+  header {
     width: 100%;
     background-color: #01923d;
     padding: 10px 0;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Texto do cabeçalho */
-.texto {
-    color: white;
-    font-size: 14px;
-    text-align: center;
-}
-
-/* Container do logo */
-.logo-container {
+  }
+  
+  /* Container do logo */
+  .logo-container {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
-}
-
-/* Área principal */
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-/* Estilo do container do formulário */
-.container {
+    flex-wrap: wrap; /* Permite que os elementos se reorganizem em telas menores */
+  }
+  
+  /* Texto do cabeçalho */
+  .texto {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  /* Responsividade para telas menores (celulares e tablets) */
+  @media (max-width: 768px) {
+    /* Esconde o brasão e o texto */
+    .brasao,
+    .texto {
+      display: none;
+    }
+  
+    /* Exibe apenas a logo da escola */
+    .logo-escola {
+      width: 80px; /* Ajuste o tamanho conforme necessário */
+      margin-top: 10px; /* Espaço superior para a logo */
+    }
+  }
+  
+  /* Responsividade para telas maiores (tablets e notebooks) */
+  @media (min-width: 769px) {
+    /* Manter as imagens e o texto do cabeçalho */
+    .logo-container img {
+      width: 70px; /* Ajuste o tamanho das imagens conforme necessário */
+    }
+  
+    .logo-container p {
+      font-size: 16px;
+    }
+  }
+  
+  /* Estilo do container do formulário */
+  .container {
     background: white;
     padding: 30px;
     border-radius: 10px;
@@ -56,31 +76,31 @@ main {
     width: 100%;
     max-width: 400px;
     position: relative; /* Permite usar 'position: relative' para o botão */
-}
-
-/* Título */
-h2 {
+  }
+  
+  /* Título */
+  h2 {
     color: #048a23;
     margin-bottom: 20px;
-}
-
-/* Campos de entrada */
-input {
+  }
+  
+  /* Campos de entrada */
+  input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-}
-
-input:focus {
+  }
+  
+  input:focus {
     border-color: #048a23;
     outline: none;
-}
-
-/* Botão */
-button {
+  }
+  
+  /* Botão */
+  button {
     width: 100%;
     padding: 10px;
     background: #048a23;
@@ -90,43 +110,48 @@ button {
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
-}
-
-button:hover {
+  }
+  
+  button:hover {
     background: #03731c;
-}
-
-/* Mensagem de erro */
-.erro {
+  }
+  
+  /* Mensagem de erro */
+  .erro {
     color: red;
     font-size: 14px;
     margin-bottom: 10px;
-}
-
-/* Responsividade */
-@media (max-width: 500px) {
+  }
+  
+  /* Responsividade para dispositivos móveis */
+  @media (max-width: 500px) {
     .container {
-        width: 95%;
+      width: 95%;
     }
-}
-.button{
-    
+  }
+  
+  /* Botão Voltar */
+  .button {
     display: inline-block;
     text-decoration: none;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
-    
     color: white;
     background-color: #048a23;
     border-radius: 5px;
     transition: 0.3s ease-in-out;
     border: 2px solid transparent;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-.btn-voltar {
+  }
+  
+  .button:hover {
+    background-color: rgb(245, 123, 0);
+  }
+  
+  /* Estilo do botão voltar */
+  .btn-voltar {
     display: inline-block;
-   
     text-align: center;
     text-decoration: none;
     color: white;
@@ -136,13 +161,5 @@ button:hover {
     margin-bottom: 20px; /* Espaço abaixo do botão */
     transition: background-color 0.3s ease;
     box-sizing: border-box; /* Faz o botão considerar o padding e borda dentro da largura */
-}
-
-
-
-/* Contêiner para manter o botão no topo à esquerda da container */
-.cadastro-container .btn-container {
-    display: flex;
-    justify-content: flex-start; /* Alinha o botão à esquerda */
-    margin-bottom: 20px; /* Espaço abaixo do botão */
-}
+  }
+  

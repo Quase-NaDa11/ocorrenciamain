@@ -28,7 +28,7 @@ if (!$result) {
 <header>
     <div class="logo-container">
         <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="Brasão do Ceará" width="70px">
-        <p class="texto">
+        <p class="texto" style="color: white;">
             GOVERNO DO ESTADO DO CEARÁ <br>
             19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br>
             ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE

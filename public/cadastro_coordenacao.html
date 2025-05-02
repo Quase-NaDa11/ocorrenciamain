@@ -9,22 +9,19 @@
   <body>
     <header>
       <div class="logo-container">
-        <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="" width="70px" />
-        <p class="texto" style="color: white">
+        <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="Brasão do Ceará" class="brasao" width="70px" />
+        <p class="texto">
           GOVERNO DO ESTADO DO CEARÁ <br />
           19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
-          ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSONAL PAULO BARBOSA LEITE
+          ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE
         </p>
-
-        <img src="/ocorrenciamain/img/escola-removebg-preview.png" alt="" width="100px" />
+        <img src="/ocorrenciamain/img/escola-removebg-preview.png" alt="Logo da Escola" class="logo-escola" width="100px" />
       </div>
     </header>
 
     <h2>Cadastro de Coordenador</h2>
 
     <main>
-      
-      </a>
       <div class="container">
         <a href="geral.html" class="btn-voltar">
           <button class="button">Voltar</button>
@@ -32,39 +29,16 @@
         <h2>Cadastro do Coordenador</h2>
         <form action="/ocorrenciamain/api/processar_cadastro_coordenacao.php" method="POST">
           <label for="nome">Nome:</label>
-          <input
-            type="text"
-            id="nome"
-            name="nome"
-            placeholder="Digite seu nome"
-            required
-          />
+          <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
 
           <label for="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Digite seu e-mail"
-            required
-          />
+          <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required />
 
           <label for="senha">Senha:</label>
-          <input
-            type="password"
-            id="senha"
-            name="senha"
-            placeholder="Digite sua senha"
-            required
-          />
+          <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
+          
           <label>Confirme sua Senha:</label>
-          <input
-            type="password"
-            id="confirmaSenha"
-            name="confirmaSenha"
-            placeholder="Confirme sua senha"
-            required
-          />
+          <input type="password" id="confirmaSenha" name="confirmaSenha" placeholder="Confirme sua senha" required />
 
           <button type="submit">Cadastrar Coordenador</button>
         </form>

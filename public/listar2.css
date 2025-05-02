@@ -156,7 +156,6 @@ td a {
 
     /* Ajustes na tabela */
     table {
-        display: block;
         overflow-x: auto; /* Permite rolagem horizontal */
         white-space: nowrap; /* Evita quebra de texto nas células */
     }
@@ -237,7 +236,6 @@ td a {
     table {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch; /* Suporte para rolagem suave */
-        display: block;
     }
 
     th, td {

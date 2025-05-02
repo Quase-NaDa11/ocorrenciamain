@@ -48,17 +48,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="/ocorrenciamain/public/editar.css">
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="Brasão do Ceará" width="70px" />
-            <p class="texto" style="color: white">
-                GOVERNO DO ESTADO DO CEARÁ <br />
-                19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
-                ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE
-            </p>
-            <img src="/ocorrenciamain/img/escola-removebg-preview.png" alt="Logo da Escola" width="100px" />
-        </div>
-    </header>
+<header>
+    <div class="logo-container">
+        <!-- Brasão e texto serão escondidos em telas pequenas -->
+        <img class="brasao" src="/ocorrenciamain/img/brasao-do-ceara.png" alt="Brasão do Ceará" width="70px" />
+        <p class="texto">
+            GOVERNO DO ESTADO DO CEARÁ <br />
+            19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
+            ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE
+        </p>
+        <!-- Logo da escola será visível em telas pequenas -->
+        <img class="logo-escola" src="/ocorrenciamain/img/escola-removebg-preview.png" alt="Logo da Escola" width="100px" />
+    </div>
+</header>
+
+
 
     <div class="container">
     <a href="listar_coordenadores.php" class="btn-voltar">Voltar</a>

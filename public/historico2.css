@@ -26,12 +26,48 @@ header {
     gap: 20px;
 }
 
-.logo-container p {
-    font-size: 14px;
-    color: white;
+/* Responsividade para Celulares (até 768px) */
+@media (max-width: 768px) {
+    /* Esconde a primeira imagem (brasão) e o texto */
+    .logo-container img:first-child,  /* Esconde o brasão */
+    .logo-container p {               /* Esconde o texto */
+        display: none;
+    }
+
+    /* Exibe apenas a segunda imagem (logo da escola) */
+    .logo-container img:last-child {
+        width: 80px; /* Ajuste o tamanho da logo conforme necessário */
+    }
 }
 
-/* Container Principal */
+/* Responsividade para Tablets e Notebooks (acima de 768px) */
+@media (min-width: 769px) {
+    /* Manter a imagem e o texto do cabeçalho */
+    .logo-container img {
+        width: 70px; /* Ajustando o tamanho das imagens */
+    }
+
+    .logo-container p {
+        font-size: 16px; /* Ajuste o tamanho do texto para uma boa visualização */
+    }
+
+    .main-container {
+        width: 80%;
+        padding: 20px;
+        margin-top: 80px;
+    }
+
+    /* Ajustes na tabela */
+    table {
+        font-size: 16px;
+    }
+
+    th, td {
+        padding: 12px;
+    }
+}
+
+/* Estilos principais para o restante da página */
 .main-container {
     margin-top: 80px;
     padding: 20px;
@@ -40,7 +76,6 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 1200px;
-   
 }
 
 /* Título */
@@ -119,19 +154,4 @@ button:hover {
     background-color: #d96a00;
     border-color: white;
     transform: scale(1.05);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .main-container {
-        width: 95%;
-    }
-    
-    table {
-        font-size: 14px;
-    }
-
-    th, td {
-        padding: 8px;
-    }
 }

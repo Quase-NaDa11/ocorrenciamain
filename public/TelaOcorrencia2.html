@@ -19,7 +19,6 @@
   </head>
 
   <body>
-    <!---->
     <header>
       <div class="logo-container">
         <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="" width="70px" />
@@ -39,7 +38,7 @@
           <button>Voltar</button>
         </a>
         <h1>REGISTRO DE SITUAÇÕES DIVERSAS</h1>
-        <form action="/ocorrenciamain/api/ocorrencia2.php" method="post">
+        <form action="/ocorrenciamain/api/ocorrencia2.php" method="post" onsubmit="return validateDate()">
           <fieldset class="estudante">
             <label for="estudante">Estudante:</label><br />
             <input type="text" name="estudante" required /><br />
@@ -118,7 +117,7 @@
             />
 
             <label for="data">Data:</label><br />
-            <input type="datetime-local" name="data" required />
+            <input type="datetime-local" name="data" required /><br />
 
             <label for="descricao">Descrição:</label> <br />
             <textarea name="descricao" rows="5" cols="89" required></textarea>
@@ -140,6 +139,20 @@
               outroInput.style.display = "none";
               outroInput.name = ""; // Remove o name para não enviar valor vazio
             }
+          }
+
+          // Função de validação de ano
+          function validateDate() {
+            var dateInput = document.querySelector('input[name="data"]');
+            var dateValue = dateInput.value;
+            var year = dateValue.split("-")[0]; // Extraí o ano da data
+
+            // Verifica se o ano tem 4 dígitos
+            if (year.length !== 4) {
+              alert("Por favor, insira um ano com 4 dígitos.");
+              return false;
+            }
+            return true;
           }
         </script>
       </div>
