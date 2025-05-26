@@ -12,7 +12,7 @@ $result = $conn->query($query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Coordenadores</title>
-    <link rel="stylesheet" href="/ocorrenciamain/public/listar2.css">
+    <link rel="stylesheet" href="/ocorrenciamain/public/listar.css">
 </head>
 <body>
     <header>

@@ -41,67 +41,53 @@ $result = $conn->query($sql);
     </div>
 </header>
 
-
 <main>
-  <div class="tudo">
-    <!-- Botões Concluído, Pendente, Todos -->
-    <div class="h1-novo">
-      <!-- Nova Ocorrência -->
-      <a href="/ocorrenciamain/public/geral.html">
-        <button>Voltar</button>
-      </a>
-      <a href="/ocorrenciamain/public/TelaOcorrencia2.html">
-        <button>Nova Ocorrência</button>
-      </a>
+    <div class="tudo">
+        <div class="h1-novo">
+            <div class="h1-busca">
+                <a href="/ocorrenciamain/public/geral.html" class="btn btn-warning btn-xs">
+                    <button>Voltar</button>
+                </a>
+                <button type="button" id="concluido">Concluído</button>
+                <button type="button" id="pendente">Pendente</button>
+                <button type="button" id="todos">Todos</button>
+                <div class="btn-group">
+                    <a href="/ocorrenciamain/public/TelaOcorrencia2.html" class="btn btn-warning btn-xs">
+                        <button>Nova Ocorrência</button>
+                    </a>
+                </div>
+                <div id="divBusca">
+                    <input type="text" id="txtBusca" placeholder="Buscar...">
+                    <img src="/ocorrenciamain/img/lupa.png" id="btnBusca" alt="Buscar" width="20px">
+                </div>
+            </div>
+        </div>
 
-      <!-- Botão Voltar -->
-     
-    </div>
-    
-    <div class="h1-busca">
-      <button type="button" id="concluido">Concluído</button>
-      <button type="button" id="pendente">Pendente</button>
-      <button type="button" id="todos">Todos</button>
-      <div id="divBusca">
-      <input type="text" id="txtBusca" placeholder="Buscar...">
-      <img src="/ocorrenciamain/img/lupa.png" id="btnBusca" alt="Buscar" width="20px">
-    </div>
-    </div>
-
-    <!-- Botões Nova Ocorrência e Voltar -->
-   
-    
-
-   
-
-  </div> 
-
-
-
-    <div class="main-container">
-        <div class="table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Problema</th>
-                        <th>Data</th>
-                        <th>Professor</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="table-body">
-                    <?php while ($row = $result->fetch_assoc()) { ?>
-                    <tr data-status="<?php echo htmlspecialchars($row['status']); ?>">
-                        <td><?php echo htmlspecialchars($row['estudante']); ?></td>
-                        <td><?php echo htmlspecialchars($row['situacao']); ?></td>
-                        <td><?php echo htmlspecialchars($row['data']); ?></td>
-                        <td><?php echo htmlspecialchars($row['professor']); ?></td>
-                        <td><?php echo htmlspecialchars($row['status']); ?></td>
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+        <div class="main-container">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Problema</th>
+                            <th>Data</th>
+                            <th>Professor</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <?php while ($row = $result->fetch_assoc()) { ?>
+                        <tr data-status="<?php echo htmlspecialchars($row['status']); ?>">
+                            <td><?php echo htmlspecialchars($row['estudante']); ?></td>
+                            <td><?php echo htmlspecialchars($row['situacao']); ?></td>
+                            <td><?php echo htmlspecialchars($row['data']); ?></td>
+                            <td><?php echo htmlspecialchars($row['professor']); ?></td>
+                            <td><?php echo htmlspecialchars($row['status']); ?></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </main>
@@ -155,7 +141,6 @@ $result = $conn->query($sql);
 
 </body>
 </html>
-
 
 <?php
 $conn->close();

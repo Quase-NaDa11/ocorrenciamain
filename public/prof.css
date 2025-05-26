@@ -37,12 +37,11 @@ header {
 .texto {
     color: white;
 }
-
-.container {
+.container{
     margin-bottom: 10px;
     margin-top: 5px;
+    
 }
-
 .logo-container {
     display: flex;
     align-items: center;
@@ -56,6 +55,8 @@ header {
 }
 
 /* Container do cadastro */
+
+
 h2 {
     margin-bottom: 20px;
     color: #048a23;
@@ -160,17 +161,9 @@ button:hover {
     button {
         font-size: 14px;
     }
-
-    .texto,
-    .logo-container img:first-child {
-        display: none;
-    }
-
-    /* Aumenta o tamanho da logo da escola para que fique visível */
-    .logo-container img:last-child {
-        display: block;
-        width: 80px;
-    }
+    .texto, 
+    .logo-container img:first-child { 
+        display: none;}
 }
 
 /* Para telas menores que 480px (Celulares) */
@@ -191,17 +184,6 @@ button:hover {
     button {
         font-size: 14px;
     }
-
-    .texto,
-    .logo-container img:first-child {
-        display: none;
-    }
-
-    /* A logo da escola permanece visível */
-    .logo-container img:last-child {
-        display: block;
-        width: 80px;
-    }
 }
 
 .remove-btn {
@@ -219,22 +201,20 @@ button:hover {
     line-height: 1;
     height: 18px;
     width: 18px;
-}
-
-.remove-btn:hover {
+  }
+  .remove-btn:hover {
     color: #ffcccc;
-}
+  }
 
-.disciplinas-container {
+  .disciplinas-container {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 15px;
     justify-content: center;
-}
-
-.disciplina-item {
-    background: #03731c;
+  }
+  .disciplina-item {
+    background:  #03731c;
     color: white;
     padding: 5px 10px;
     border-radius: 20px;
@@ -245,9 +225,14 @@ button:hover {
     font-weight: bold;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     height: 30px; /* Garantir que os itens tenham uma altura consistente */
-}
-
+  }
+  
+   
 /* Garantir que a container tenha um contexto para o botão */
+
+
+
+/* Container do cadastro */
 .cadastro-container {
     background: white;
     padding: 20px;
@@ -261,8 +246,10 @@ button:hover {
 /* Botão de Voltar */
 .btn-voltar {
     display: inline-block;
+   
     text-align: center;
     text-decoration: none;
+   
     color: white;
     border-radius: 5px;
     font-size: 14px;
@@ -271,6 +258,8 @@ button:hover {
     transition: background-color 0.3s ease;
     box-sizing: border-box; /* Faz o botão considerar o padding e borda dentro da largura */
 }
+
+
 
 /* Contêiner para manter o botão no topo à esquerda da container */
 .cadastro-container .btn-container {

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Registro de Ocorrência</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="shortcut icon"
@@ -13,13 +13,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
   </head>
 
   <body>
-    <!---->
     <header>
       <div class="logo-container">
         <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="" width="70px" />
@@ -28,18 +27,21 @@
           19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
           ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSONAL PAULO BARBOSA LEITE
         </p>
-
         <img src="/ocorrenciamain/img/escola-removebg-preview.png" alt="" width="100px" />
       </div>
     </header>
 
     <main>
       <div class="main-container">
-        <a href="/ocorrenciamain/api/historico_professor.php" class="btn btn-warning btn-xs">
+        <a href="/ocorrenciamain/api/historico_professor.php">
           <button>Voltar</button>
         </a>
         <h1>REGISTRO DE SITUAÇÕES DIVERSAS</h1>
+
+        <!-- Início do formulário que carrega dados dinâmicos do PHP -->
         <form action="/ocorrenciamain/api/ocorrencia.php" method="post">
+          
+
           <fieldset class="estudante">
             <label for="estudante">Estudante:</label><br />
             <input type="text" name="estudante" required /><br />
@@ -59,12 +61,7 @@
             </select>
 
             <label for="situacao">Escolha uma situação:</label>
-            <select
-              name="situacao"
-              id="situacao"
-              onchange="mostrarInput(this)"
-              required
-            >
+            <select name="situacao" id="situacao" onchange="mostrarInput(this)" required>
               <option disabled selected hidden>Selecione uma situação</option>
               <option value="indisciplina">Indisciplina</option>
               <option value="celular">Celular</option>
@@ -75,14 +72,7 @@
               <option value="outros">Outros</option>
             </select>
 
-            <!-- Campo oculto para "Outros" -->
-            <input
-              type="text"
-              name="situacao_outros"
-              id="outro"
-              style="display: none"
-              placeholder="Digite a situação"
-            />
+            <input type="text" name="situacao_outros" id="outro" style="display: none" placeholder="Digite a situação" />
 
             <label for="turma">Turma:</label>
             <select name="turma" required>
@@ -90,37 +80,26 @@
               <option value="1º Administração">1° Administração</option>
               <option value="1º Agropecuária">1° Agropecuária</option>
               <option value="1º Informática">1° Informática</option>
-              <option value="1º Desenvolvimento de Sistema">
-                1° Desenvolvimento de Sistema
-              </option>
+              <option value="1º Desenvolvimento de Sistema">1° Desenvolvimento de Sistema</option>
               <option value="2º Administração">2° Administração</option>
               <option value="2º Agropecuária">2° Agropecuária</option>
               <option value="2º Informática">2° Informática</option>
-              <option value="2º Desenvolvimento de Sistema">
-                2° Desenvolvimento de Sistema
-              </option>
+              <option value="2º Desenvolvimento de Sistema">2° Desenvolvimento de Sistema</option>
               <option value="3º Administração">3° Administração</option>
               <option value="3º Agropecuária">3° Agropecuária</option>
               <option value="3º Informática">3° Informática</option>
-              <option value="3º Desenvolvimento de Sistema">
-                3° Desenvolvimento de Sistema
-              </option>
+              <option value="3º Desenvolvimento de Sistema">3° Desenvolvimento de Sistema</option>
             </select>
           </fieldset>
 
           <fieldset class="professor">
             <label for="professor_nome">Professor Responsável:</label>
-            <input
-              type="text"
-              name="professor_nome"
-              required
-              placeholder="Digite o nome do professor"
-            />
+            <input type="text" id="professor_nome" name="professor_nome" readonly />
+    
+            <label for="data">Data:</label>
+            <input type="datetime-local" id="data" name="data" readonly />
 
-            <label for="data">Data:</label><br />
-            <input type="datetime-local" name="data" required />
-
-            <label for="descricao">Descrição:</label> <br />
+            <label for="descricao">Descrição:</label><br />
             <textarea name="descricao" rows="5" cols="89" required></textarea>
 
             <label for="encaminhamento">Encaminhamento:</label><br />
@@ -135,12 +114,26 @@
             var outroInput = document.getElementById("outro");
             if (select.value === "outros") {
               outroInput.style.display = "block";
-              outroInput.name = "situacao"; // Define o name do campo alternativo
+              outroInput.name = "situacao";
             } else {
               outroInput.style.display = "none";
-              outroInput.name = ""; // Remove o name para não enviar valor vazio
+              outroInput.name = "";
             }
           }
+          fetch('/ocorrenciamain/api/carregar_dados.php')
+      .then(res => res.json())
+      .then(data => {
+        if(data.error) {
+          alert(data.error);
+          // opcional: redirecionar para login
+          window.location.href = '/ocorrenciamain/login.html';
+          return;
+        }
+
+        document.getElementById('professor_nome').value = data.nomeProfessor;
+        document.getElementById('data').value = data.dataAtual;
+      })
+      .catch(err => console.error('Erro ao carregar dados:', err));
         </script>
       </div>
     </main>

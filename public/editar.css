@@ -1,3 +1,5 @@
+/* style.css */
+
 /* Resetando algumas configurações padrões do navegador */
 * {
     margin: 0;
@@ -32,49 +34,6 @@ header {
     gap: 20px;
 }
 
-/* Exibe a logo da escola e oculta o brasão e o texto em telas pequenas */
-.logo-escola {
-    display: none;
-}
-
-/* Exibe o brasão e o texto em telas grandes */
-.brasao, .texto {
-    display: block;
-}
-
-/* Responsividade: Esconde o brasão e o texto em telas pequenas (max-width: 768px) */
-@media screen and (max-width: 768px) {
-    /* Esconde o brasão e o texto em telas pequenas */
-    .brasao, .texto {
-        display: none;
-    }
-
-    /* Exibe a logo da escola em telas pequenas */
-    .logo-escola {
-        display: block;
-    }
-
-    /* Organiza as imagens na coluna em telas pequenas */
-    .logo-container {
-        flex-direction: column;
-    }
-}
-
-/* Para telas grandes (maiores que 768px), exibe o brasão e o texto e esconde a logo da escola */
-@media screen and (min-width: 769px) {
-    .brasao, .texto {
-        display: block; /* Exibe o brasão e o texto */
-    }
-
-    .logo-escola {
-        display: none; /* Esconde a logo da escola */
-    }
-
-    .logo-container {
-        flex-direction: row; /* Coloca as imagens em linha */
-    }
-}
-
 /* Container principal da página */
 .container {
     background-color: #fff;
@@ -84,6 +43,7 @@ header {
     max-width: 500px;
     margin: 20px auto 0;
     position: relative;
+    
 }
 
 h1 {
@@ -134,6 +94,43 @@ button:hover {
     background-color: #45a049;
 }
 
+/* Estilo para a tabela */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+/* Botões de ações (exclusão) */
+.delete-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #e53935;
+}
+
 /* Responsividade */
 @media screen and (max-width: 600px) {
     .logo-container {
@@ -153,7 +150,6 @@ button:hover {
         width: 100%;
     }
 }
-
 .btn-voltar {
     position: absolute; /* Posiciona o botão dentro da container */
     top: 20px; /* Distância de 20px do topo da container */

@@ -1,161 +1,158 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="shortcut icon"
-      href="/ocorrenciamain/img/escola-removebg-preview.png"
-      type="image/x-icon"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de Ocorrência</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="/ocorrenciamain/img/brasao-do-ceara.png" width="70px" />
+      <p style="color: white;">
+        GOVERNO DO ESTADO DO CEARÁ <br />
+        19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
+        ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE
+      </p>
+      <img src="/ocorrenciamain/img/escola-removebg-preview.png" width="100px" />
+    </div>
+  </header>
 
-  <body>
-    <header>
-      <div class="logo-container">
-        <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="" width="70px" />
-        <p class="texto" style="color: white">
-          GOVERNO DO ESTADO DO CEARÁ <br />
-          19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
-          ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSONAL PAULO BARBOSA LEITE
-        </p>
+  <main>
+    <div class="main-container">
+      <a href="/ocorrenciamain/api/historico_coordenador.php">
+        <button>Voltar</button>
+      </a>
 
-        <img src="/ocorrenciamain/img/escola-removebg-preview.png" alt="" width="100px" />
-      </div>
-    </header>
+      <h1>REGISTRO DE SITUAÇÕES DIVERSAS</h1>
+      <form action="/ocorrenciamain/api/ocorrencia2.php" method="post">
+        <fieldset class="estudante">
+          <label>Estudante:</label><br />
+          <input type="text" name="estudante" required /><br />
 
-    <main>
-      <div class="main-container">
-        <a href="/ocorrenciamain/api/historico_coordenador.php" class="btn btn-warning btn-xs">
-          <button>Voltar</button>
-        </a>
-        <h1>REGISTRO DE SITUAÇÕES DIVERSAS</h1>
-        <form action="/ocorrenciamain/api/ocorrencia2.php" method="post" onsubmit="return validateDate()">
-          <fieldset class="estudante">
-            <label for="estudante">Estudante:</label><br />
-            <input type="text" name="estudante" required /><br />
+          <label>Aula:</label>
+          <select name="aula" required>
+            <option disabled selected hidden>Selecione a aula</option>
+            <option value="1">1°</option>
+            <option value="2">2°</option>
+            <option value="3">3°</option>
+            <option value="4">4°</option>
+            <option value="5">5°</option>
+            <option value="6">6°</option>
+            <option value="7">7°</option>
+            <option value="8">8°</option>
+            <option value="9">9°</option>
+          </select>
 
-            <label for="aula">Aula:</label>
-            <select name="aula" required>
-              <option disabled selected hidden>Selecione a aula</option>
-              <option value="1">1°</option>
-              <option value="2">2°</option>
-              <option value="3">3°</option>
-              <option value="4">4°</option>
-              <option value="5">5°</option>
-              <option value="6">6°</option>
-              <option value="7">7°</option>
-              <option value="8">8°</option>
-              <option value="9">9°</option>
-            </select>
+          <label>Situação:</label>
+          <select name="situacao" id="situacao" onchange="mostrarInput(this)" required>
+            <option disabled selected hidden>Selecione uma situação</option>
+            <option value="indisciplina">Indisciplina</option>
+            <option value="celular">Celular</option>
+            <option value="desrespeito">Desrespeito</option>
+            <option value="rendimento">Rendimento</option>
+            <option value="atrasos">Atrasos</option>
+            <option value="faltas">Faltas</option>
+            <option value="outros">Outros</option>
+          </select>
 
-            <label for="situacao">Escolha uma situação:</label>
-            <select
-              name="situacao"
-              id="situacao"
-              onchange="mostrarInput(this)"
-              required
-            >
-              <option disabled selected hidden>Selecione uma situação</option>
-              <option value="indisciplina">Indisciplina</option>
-              <option value="celular">Celular</option>
-              <option value="desrespeito">Desrespeito</option>
-              <option value="rendimento">Rendimento</option>
-              <option value="atrasos">Atrasos</option>
-              <option value="faltas">Faltas</option>
-              <option value="outros">Outros</option>
-            </select>
+          <input type="text" name="situacao_outros" id="outro" style="display: none" placeholder="Digite a situação" />
 
-            <!-- Campo oculto para "Outros" -->
-            <input
-              type="text"
-              name="situacao_outros"
-              id="outro"
-              style="display: none"
-              placeholder="Digite a situação"
-            />
+          <label>Turma:</label>
+          <select name="turma" required>
+            <option disabled selected hidden>Selecione a turma</option>
+            <option value="1º Administração">1° Administração</option>
+            <option value="1º Agropecuária">1° Agropecuária</option>
+            <option value="1º Informática">1° Informática</option>
+            <option value="1º Desenvolvimento de Sistema">1° Desenvolvimento de Sistema</option>
+            <option value="2º Administração">2° Administração</option>
+            <option value="2º Agropecuária">2° Agropecuária</option>
+            <option value="2º Informática">2° Informática</option>
+            <option value="2º Desenvolvimento de Sistema">2° Desenvolvimento de Sistema</option>
+            <option value="3º Administração">3° Administração</option>
+            <option value="3º Agropecuária">3° Agropecuária</option>
+            <option value="3º Informática">3° Informática</option>
+            <option value="3º Desenvolvimento de Sistema">3° Desenvolvimento de Sistema</option>
+          </select>
+        </fieldset>
 
-            <label for="turma">Turma:</label>
-            <select name="turma" required>
-              <option disabled selected hidden>Selecione a turma</option>
-              <option value="1º Administração">1° Administração</option>
-              <option value="1º Agropecuária">1° Agropecuária</option>
-              <option value="1º Informática">1° Informática</option>
-              <option value="1º Desenvolvimento de Sistema">
-                1° Desenvolvimento de Sistema
-              </option>
-              <option value="2º Administração">2° Administração</option>
-              <option value="2º Agropecuária">2° Agropecuária</option>
-              <option value="2º Informática">2° Informática</option>
-              <option value="2º Desenvolvimento de Sistema">
-                2° Desenvolvimento de Sistema
-              </option>
-              <option value="3º Administração">3° Administração</option>
-              <option value="3º Agropecuária">3° Agropecuária</option>
-              <option value="3º Informática">3° Informática</option>
-              <option value="3º Desenvolvimento de Sistema">
-                3° Desenvolvimento de Sistema
-              </option>
-            </select>
-          </fieldset>
+        <fieldset class="coordenador">
+          <label for="professor_nome">Coordenador Responsável:</label>
+<input
+  type="text"
+  name="professor_nome"
+  required
+  placeholder="Nome do coordenador"
+  readonly
+/>
 
-          <fieldset class="professor">
-            <label for="professor_nome">Coordenador Responsável:</label>
-            <input
-              type="text"
-              name="professor_nome"
-              required
-              placeholder="Digite o nome do professor"
-            />
+<label for="data">Data:</label><br />
+<input type="datetime-local" name="data" required readonly />
 
-            <label for="data">Data:</label><br />
-            <input type="datetime-local" name="data" required /><br />
+          <label>Descrição:</label><br />
+          <textarea name="descricao" rows="5" cols="89" required></textarea>
 
-            <label for="descricao">Descrição:</label> <br />
-            <textarea name="descricao" rows="5" cols="89" required></textarea>
+          <label>Encaminhamento:</label><br />
+          <textarea name="encaminhamento" rows="4" cols="89"></textarea>
+        </fieldset>
 
-            <label for="encaminhamento">Encaminhamento:</label><br />
-            <textarea name="encaminhamento" rows="4" cols="89"></textarea>
-          </fieldset>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </main>
 
-          <button type="submit">Enviar</button>
-        </form>
+  <script>
+    function mostrarInput(select) {
+      const outro = document.getElementById("outro");
+      if (select.value === "outros") {
+        outro.style.display = "block";
+        outro.name = "situacao";
+      } else {
+        outro.style.display = "none";
+        outro.name = "situacao_outros";
+      }
+    }
 
-        <script>
-          function mostrarInput(select) {
-            var outroInput = document.getElementById("outro");
-            if (select.value === "outros") {
-              outroInput.style.display = "block";
-              outroInput.name = "situacao"; // Define o name do campo alternativo
-            } else {
-              outroInput.style.display = "none";
-              outroInput.name = ""; // Remove o name para não enviar valor vazio
-            }
-          }
+    document.addEventListener("DOMContentLoaded", () => {
+  fetch("/ocorrenciamain/api/dados_sessao_coordenador.php", {
+    credentials: "include"
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.erro) {
+        alert("Sessão expirada. Faça login novamente.");
+        window.location.href = "/ocorrenciamain/public/login_coordenador.php";
+        return;
+      }
 
-          // Função de validação de ano
-          function validateDate() {
-            var dateInput = document.querySelector('input[name="data"]');
-            var dateValue = dateInput.value;
-            var year = dateValue.split("-")[0]; // Extraí o ano da data
+      // Preenche o nome do coordenador
+      const nomeInput = document.querySelector("input[name='professor_nome']");
+      if (nomeInput) {
+        nomeInput.value = data.nome;
+      }
 
-            // Verifica se o ano tem 4 dígitos
-            if (year.length !== 4) {
-              alert("Por favor, insira um ano com 4 dígitos.");
-              return false;
-            }
-            return true;
-          }
-        </script>
-      </div>
-    </main>
-  </body>
+      // Preenche a data e hora local corretamente
+      const dataInput = document.querySelector("input[name='data']");
+      if (dataInput) {
+        const agora = new Date();
+        function formatDateLocal(date) {
+          const pad = (n) => (n < 10 ? '0' + n : n);
+          const ano = date.getFullYear();
+          const mes = pad(date.getMonth() + 1);
+          const dia = pad(date.getDate());
+          const horas = pad(date.getHours());
+          const minutos = pad(date.getMinutes());
+          return `${ano}-${mes}-${dia}T${horas}:${minutos}`;
+        }
+        dataInput.value = formatDateLocal(agora);
+      }
+    })
+    .catch(error => {
+      console.error("Erro ao buscar dados da sessão:", error);
+    });
+});
+
+  </script>
+</body>
 </html>
