@@ -24,11 +24,23 @@ header {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    flex-wrap: nowrap; /* Não deixa quebrar linha no desktop */
 }
 
+/* Texto no header */
 .logo-container p {
     font-size: 14px;
     color: white;
+    max-width: 400px;
+    text-align: center;
+    flex-shrink: 1; /* Permite o texto encolher */
+}
+
+.logo-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    flex-shrink: 0;
 }
 
 /* Container Principal */
@@ -40,7 +52,6 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 1200px;
-   
 }
 
 /* Título */
@@ -121,7 +132,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Responsividade */
+/* Responsividade para tablets e telas menores */
 @media (max-width: 768px) {
     .main-container {
         width: 95%;
@@ -133,5 +144,61 @@ button:hover {
 
     th, td {
         padding: 8px;
+    }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 480px) {
+    .logo-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 5px;
+    }
+
+    /* Esconder a primeira imagem e o texto no celular */
+    .logo-container img:nth-child(1),
+    .logo-container p.texto {
+        display: none !important;
+    }
+
+    /* Ajustar tamanho e alinhamento da última imagem */
+    .logo-container img:nth-child(3) {
+        width: 80px !important;
+        height: auto !important;
+        flex-shrink: 0;
+    }
+
+    .main-container {
+        width: 95%;
+        margin-top: 60px;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    td input {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .btn-voltar {
+        font-size: 14px;
+        padding: 8px 15px;
     }
 }

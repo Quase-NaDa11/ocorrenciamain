@@ -79,13 +79,14 @@ $result = $conn->query($sql);
                     </thead>
                     <tbody id="table-body">
                         <?php while ($row = $result->fetch_assoc()) { ?>
-                        <tr data-status="<?php echo htmlspecialchars($row['status']); ?>">
-                            <td><?php echo htmlspecialchars($row['estudante']); ?></td>
-                            <td><?php echo htmlspecialchars($row['situacao']); ?></td>
-                            <td><?php echo htmlspecialchars($row['data']); ?></td>
-                            <td><?php echo htmlspecialchars($row['professor']); ?></td>
-                            <td><?php echo htmlspecialchars($row['status']); ?></td>
-                        </tr>
+                       <tr data-status="<?php echo htmlspecialchars($row['status']); ?>">
+  <td data-label="Nome"><?php echo htmlspecialchars($row['estudante']); ?></td>
+  <td data-label="Problema"><?php echo htmlspecialchars($row['situacao']); ?></td>
+  <td data-label="Data"><?php echo htmlspecialchars($row['data']); ?></td>
+  <td data-label="Professor"><?php echo htmlspecialchars($row['professor']); ?></td>
+  <td data-label="Status"><?php echo htmlspecialchars($row['status']); ?></td>
+</tr>
+
                         <?php } ?>
                     </tbody>
                 </table>

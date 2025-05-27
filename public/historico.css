@@ -68,6 +68,7 @@ header {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  gap: 25px;
 }
 
 .h1-novo {
@@ -83,9 +84,37 @@ header {
 .novo {
   margin-left: 40px; /* Distância extra para destacar o botão */
 }
+/* Aplica para todos os botões na página */
+button, 
+.btn, 
+.btn-xs, 
+.btn-success, 
+.btn-warning {
+  width: 150px;         /* Largura maior */
+  height: 50px;         /* Altura maior */
+  line-height: 50px;    /* Centraliza verticalmente o texto */
+  padding: 0;           
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;  
+}
+
+/* Botões dentro do link "Nova Ocorrência" */
+a.btn > button {
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 .novo button {
-
   font-size: 16px;
   font-weight: bold;
   color: white;
@@ -155,8 +184,20 @@ th, td {
   font-size: 16px;
 }
 
-/* Responsividade para telas menores */
+/* === Responsividade para telas menores (celular) === */
 @media screen and (max-width: 768px) {
+
+  /* Remove a primeira imagem e o texto do cabeçalho no mobile */
+  .logo-container img:first-child,
+  .logo-container p {
+    display: none;
+  }
+
+  /* Deixa só a segunda imagem visível */
+  .logo-container img:last-child {
+    margin: 0 auto;
+  }
+
   .h1-busca {
       flex-direction: column;
       align-items: center;
@@ -167,16 +208,17 @@ th, td {
       overflow-x: auto;
   }
 
+  /* Faz a tabela virar bloco */
   table, thead, tbody, th, td, tr {
       display: block;
   }
 
   thead {
-      display: none;
+      display: none; /* Esconde cabeçalho da tabela */
   }
 
   tr {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       border: 1px solid rgba(0, 0, 0, 0.1);
       background: #fff;
       padding: 10px;
@@ -189,17 +231,34 @@ th, td {
       text-align: left;
       display: flex;
       align-items: center;
+      justify-content: flex-start;
+      font-size: 14px;
+      border: none;
+      border-bottom: 1px solid #eee;
+  }
+
+  td:last-child {
+      border-bottom: none;
   }
 
   td::before {
-      content: attr(data-label);
       position: absolute;
+      top: 10px;
       left: 10px;
+      width: 45%;
+      white-space: nowrap;
       font-weight: bold;
       color: #333;
+      content: attr(data-label);
   }
 
   button {
       width: 100%;
+      margin-top: 5px;
+  }
+
+  #divBusca {
+      width: 100%;
+      max-width: 350px;
   }
 }

@@ -1,96 +1,113 @@
-/* style.css */
-
-/* Resetando algumas configurações padrões do navegador */
+/* Reset básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #048a23;
-    
+  font-family: Arial, sans-serif;
+  background-color: #048a23;
 }
+
 header {
-    width: 100%;
-    text-align: center;
-    background-color: #01923d;
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  background-color: #01923d;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.texto{
-    color: white;
-}
 .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 10px;
+  flex-wrap: nowrap; /* Impede que elementos quebrem linha e "girem" */
 }
 
-.logo-container p {
-    font-size: 14px;
-    color: #333;
+/* Responsividade para mobile - muda para coluna */
+@media (max-width: 480px) {
+  .logo-container {
+    flex-wrap: wrap; /* Permite quebrar linha no mobile */
+    flex-direction: column; /* Empilha verticalmente */
+    justify-content: center;
+    gap: 10px;
+    padding: 0 5px;
+  }
+
+  /* Esconder primeira imagem e texto no mobile */
+  .logo-container img:nth-child(1),
+  .logo-container .texto {
+    display: none !important;
+  }
+
+  /* Ajustar a última imagem */
+  .logo-container img:nth-child(3) {
+    width: 80px !important;
+    height: auto !important;
+  }
+}
+
+.texto {
+  color: white;
+  font-size: 14px;
+  max-width: 400px;
+  text-align: center;
+  flex-shrink: 1; /* Permite encolher, evita overflow */
+}
+
+.logo-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  flex-shrink: 0; /* Não encolhe */
 }
 
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin: 0 auto;
-    margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 20px auto 40px;
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .button {
-    display: inline-block;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    margin: 10px 0;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+  display: inline-block;
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  margin: 10px 0;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .button:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
-.delete-button {
-    background-color: #f44336;
-}
+@media (max-width: 480px) {
+  .container {
+    width: 90% !important;
+    padding: 15px !important;
+  }
 
-.delete-button:hover {
-    background-color: #e53935;
-}
+  h1 {
+    font-size: 20px !important;
+  }
 
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-th, td {
-    padding: 10px;
-}
-
-th {
-    background-color: #f4f4f4;
+  .button {
+    font-size: 14px !important;
+    padding: 10px 15px !important;
+  }
 }
