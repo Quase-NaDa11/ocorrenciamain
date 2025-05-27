@@ -46,10 +46,11 @@ $result = $conn->query($query);
                     <tr>
                         <td><?php echo htmlspecialchars($row['nome']); ?></td>
                         <td><?php echo htmlspecialchars($row['email']); ?></td>
-                        <td>
-                            <a href="editar_coordenador.php?id=<?php echo $row['id']; ?>" class="button edit-button">Alterar</a>
-                            <a href="excluir_coordenador.php?id=<?php echo $row['id']; ?>" class="button delete-button" onclick="return confirm('Tem certeza que deseja excluir este coordenador?')">Excluir</a>
-                        </td>
+                      <td class="acoes">
+  <a href="editar_coordenador.php?id=<?php echo $row['id']; ?>" class="button edit-button">Alterar</a>
+  <a href="excluir_coordenador.php?id=<?php echo $row['id']; ?>" class="button delete-button" onclick="return confirm('Tem certeza que deseja excluir este coordenador?')">Excluir</a>
+</td>
+
                     </tr>
                 <?php } ?>
             </tbody>

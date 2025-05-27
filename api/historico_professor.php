@@ -83,7 +83,7 @@ $result = $conn->query($sql);
   <td data-label="Nome"><?php echo htmlspecialchars($row['estudante']); ?></td>
   <td data-label="Problema"><?php echo htmlspecialchars($row['situacao']); ?></td>
   <td data-label="Data"><?php echo htmlspecialchars($row['data']); ?></td>
-  <td data-label="Professor"><?php echo htmlspecialchars($row['professor']); ?></td>
+ <td data-label="Professor"><?php echo htmlspecialchars($row['professor']); ?></td>
   <td data-label="Status"><?php echo htmlspecialchars($row['status']); ?></td>
 </tr>
 

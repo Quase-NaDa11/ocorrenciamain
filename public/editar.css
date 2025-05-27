@@ -1,5 +1,3 @@
-/* style.css */
-
 /* Resetando algumas configurações padrões do navegador */
 * {
     margin: 0;
@@ -10,7 +8,7 @@
 /* Corpo da página */
 body {
     font-family: Arial, sans-serif;
-    background-color: #048a23; /* Cor de fundo do site */
+    background-color: #048a23;
 }
 
 /* Cabeçalho */
@@ -34,7 +32,7 @@ header {
     gap: 20px;
 }
 
-/* Container principal da página */
+/* Container principal */
 .container {
     background-color: #fff;
     padding: 20px;
@@ -43,13 +41,11 @@ header {
     max-width: 500px;
     margin: 20px auto 0;
     position: relative;
-    
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
-    margin-top: 40px;
+    margin: 40px 0 20px;
 }
 
 /* Estilos do formulário */
@@ -82,7 +78,6 @@ button {
     background-color: #4CAF50;
     color: white;
     padding: 10px;
-    text-align: center;
     border-radius: 5px;
     font-size: 16px;
     border: none;
@@ -94,41 +89,19 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Estilo para a tabela */
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-th, td {
-    padding: 10px;
-}
-
-th {
-    background-color: #f4f4f4;
-}
-
-/* Botões de ações (exclusão) */
-.delete-button {
-    background-color: #f44336;
-    color: white;
+/* Botão voltar */
+.btn-voltar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
     padding: 10px 20px;
+    background-color: #048a23;
+    color: white;
     border-radius: 5px;
-    text-align: center;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
     transition: background-color 0.3s ease;
-}
-
-.delete-button:hover {
-    background-color: #e53935;
+    z-index: 1;
 }
 
 /* Responsividade */
@@ -137,32 +110,29 @@ th {
         flex-direction: column;
     }
 
+    .logo-container img:first-child, /* Remove a primeira imagem */
+    .texto {
+        display: none;
+    }
+
     .container {
         padding: 15px;
         width: 90%;
     }
 
     h1 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
-    button, .delete-button {
-        width: 100%;
+    input[type="text"],
+    input[type="email"],
+    button,
+    .btn-voltar {
+        font-size: 16px;
     }
-}
-.btn-voltar {
-    position: absolute; /* Posiciona o botão dentro da container */
-    top: 20px; /* Distância de 20px do topo da container */
-    left: 20px; /* Distância de 20px da borda esquerda da container */
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    background-color: #048a23; /* Cor do botão de voltar */
-    color: white;
-    border-radius: 5px;
-    font-size: 14px;
-    width: auto; /* Largura automática para o botão */
-    transition: background-color 0.3s ease;
-    z-index: 1; /* Garante que o botão fique acima do conteúdo da container */
-    box-sizing: border-box; /* Considera o padding e borda dentro da largura */
+
+    .btn-voltar {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
 }

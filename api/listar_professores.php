@@ -12,7 +12,7 @@ $result = $conn->query($query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Professores</title>
-    <link rel="stylesheet" href="/ocorrenciamain/public/listar.css">
+    <link rel="stylesheet" href="/ocorrenciamain/public/listar2.css">
 </head>
 <body>
     <header>
@@ -30,6 +30,7 @@ $result = $conn->query($query);
     <div class="container">
     <a href="/ocorrenciamain/public/geral.html" class="btn-voltar">Voltar</a>
         <h1>Lista de Professores</h1>
+        <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
@@ -55,6 +56,7 @@ $result = $conn->query($query);
                 <?php } ?>
             </tbody>
         </table>
+        </div>
     </div>
 </body>
 </html>

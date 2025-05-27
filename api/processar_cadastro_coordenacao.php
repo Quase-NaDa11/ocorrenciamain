@@ -5,7 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Criptografar senha
-    $admin = 1; // Definir como administrador
 
     // Verificar se o email já está cadastrado
     $query = "SELECT id FROM Coordenador WHERE email = ?";
@@ -17,17 +16,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         echo "Este email já está cadastrado!";
     } else {
-        // Inserir no banco de dados
-        $query = "INSERT INTO Coordenador (nome, email, senha, admin) VALUES (?, ?, ?, ?)";
+        // Inserir no banco de dados - sem campo admin
+        $query = "INSERT INTO Coordenador (nome, email, senha) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("sssi", $nome, $email, $senha, $admin);
+        $stmt->bind_param("sss", $nome, $email, $senha);
 
         if ($stmt->execute()) {
             echo "Cadastro realizado com sucesso!";
             header("Location: /ocorrenciamain/public/geral.html"); // Redirecionar para login
             exit();
         } else {
-            echo "Erro ao cadastrar.";
+            echo "Erro ao cadastrar: " . $stmt->error;
         }
     }
 }

@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user = $result->fetch_assoc();
 
             if (password_verify($senha, $user['senha'])) {
-                $_SESSION['coordenacao_id'] = $user['id'];
+                $_SESSION['coordenador_id'] = $user['id'];
                 $_SESSION['nome'] = $user['nome'];
                 
-                $_SESSION['coordenador_admin'] = true;
+
                 header("Location: /ocorrenciamain/public/geral.html");
                 exit();
             } else {
@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
