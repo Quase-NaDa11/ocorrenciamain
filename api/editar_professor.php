@@ -48,6 +48,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Professor</title>
     <link rel="stylesheet" href="/ocorrenciamain/public/editar.css">
+ <script>
+  function formatarCPF(campo) {
+  let cpf = campo.value;
+
+  // Remove tudo que não for número
+  cpf = cpf.replace(/\D/g, "");
+
+  // Limita a 11 dígitos
+  if (cpf.length > 11) {
+    cpf = cpf.slice(0, 11);
+  }
+
+  // Aplica a formatação somente se o usuário está digitando (com base no tamanho)
+  if (cpf.length > 0) {
+    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+  }
+  if (cpf.length > 3) {
+    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+  }
+  if (cpf.length > 6) {
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+  }
+
+  campo.value = cpf;
+}
+
+</script>
+
+
 </head>
 <body>
     <header>
@@ -72,8 +101,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="email">Email Institucional:</label>
             <input type="email" id="email" name="email_institucional" value="<?php echo htmlspecialchars($professor['email_institucional']); ?>" required>
 
-            <label for="cpf">CPF:</label>
-            <input type="text" id="cpf" name="cpf" value="<?php echo htmlspecialchars($professor['cpf']); ?>" required>
+            <label>CPF:</label>
+          <input 
+  type="text" 
+  name="cpf" 
+  id="cpf" 
+  maxlength="14" 
+  placeholder="000.000.000-00" 
+  required 
+  onkeyup="formatarCPF(this)" 
+  value="<?php echo htmlspecialchars($professor['cpf']); ?>"
+>
+
+
 
             <label for="disciplina">Disciplina:</label>
             <input type="text" id="disciplina" name="disciplina" value="<?php echo htmlspecialchars($professor['disciplina']); ?>" required>

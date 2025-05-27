@@ -1,136 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro de Professor</title>
-    <link rel="stylesheet" href="prof.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Professor</title>
+  <link rel="stylesheet" href="prof.css" />
+  <script>
+    function adicionarDisciplina() {
+      let input = document.getElementById("disciplinaInput");
+      let disciplina = input.value.trim();
+      let container = document.getElementById("disciplinasContainer");
+      let hiddenInput = document.getElementById("disciplinas");
 
-    <script>
-      function adicionarDisciplina() {
-        let input = document.getElementById("disciplinaInput");
-        let disciplina = input.value.trim();
-        let container = document.getElementById("disciplinasContainer");
+      if (disciplina && !document.getElementById(disciplina)) {
+        let item = document.createElement("div");
+        item.className = "disciplina-item";
+        item.id = disciplina;
 
-        if (disciplina && !document.getElementById(disciplina)) {
-          let item = document.createElement("div");
-          item.className = "disciplina-item";
-          item.id = disciplina;
+        let span = document.createElement("span");
+        span.textContent = disciplina;
 
-          let span = document.createElement("span");
-          span.textContent = disciplina;
+        let btn = document.createElement("a");
+        btn.className = "remove-btn";
+        btn.textContent = "✖";
+        btn.onclick = function () {
+          container.removeChild(item);
+          atualizarDisciplinas();
+        };
 
-          let btn = document.createElement("a");
-          btn.className = "remove-btn";
-          btn.textContent = "✖";
-          btn.onclick = function () {
-            container.removeChild(item);
-          };
+        item.appendChild(span);
+        item.appendChild(btn);
+        container.appendChild(item);
 
-          item.appendChild(span);
-          item.appendChild(btn);
-          container.appendChild(item);
-
-          input.value = "";
-        }
+        input.value = "";
+        atualizarDisciplinas();
       }
+    }
 
-      function validarSenha() {
-        let senha = document.getElementById("senha").value;
-        let confirmaSenha = document.getElementById("confirmaSenha").value;
-        let erroSenha = document.getElementById("erroSenha");
+    function atualizarDisciplinas() {
+      let disciplinas = [];
+      document.querySelectorAll(".disciplina-item span").forEach(function (el) {
+        disciplinas.push(el.textContent);
+      });
+      document.getElementById("disciplinas").value = disciplinas.join(", ");
+    }
 
-        if (senha !== confirmaSenha) {
-          erroSenha.textContent = "As senhas não coincidem!";
-          return false;
-        }
-        erroSenha.textContent = "";
-        return true;
+    function validarSenha() {
+      let senha = document.getElementById("senha").value;
+      let confirmaSenha = document.getElementById("confirmaSenha").value;
+      let erroSenha = document.getElementById("erroSenha");
+
+      if (senha !== confirmaSenha) {
+        erroSenha.textContent = "As senhas não coincidem!";
+        return false;
       }
-    </script>
-  </head>
-  <body>
-    <header>
-      <div class="logo-container">
-        <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="" width="70px" />
-        <p class="texto" style="color: white">
-          GOVERNO DO ESTADO DO CEARÁ <br />
-          19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
-          ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSONAL PAULO BARBOSA LEITE
-        </p>
-        <img src="/ocorrenciamain/img/escola-removebg-preview.png" alt="" width="100px" />
-      </div>
-    </header>
+      erroSenha.textContent = "";
+      return true;
+    }
 
-    <main>
-      <div class="cadastro-container">
-       
-        <a href="geral.html" class="btn-voltar">
-          <button class="button">Voltar</button>
-        </a>
-        
-      
-        <h2>Cadastro de Professor</h2>
-        <form
-          action="/ocorrenciamain/api/processo_cadastro_professor.php"
-          method="POST"
-          onsubmit="return validarSenha()"
-        >
-          <label>Nome:</label>
-          <input
-            type="text"
-            name="nome"
-            placeholder="Digite seu nome"
-            required
-          />
+    function formatarCPF(campo) {
+    let cpf = campo.value.replace(/\D/g, ""); // Remove tudo que não for número
 
-          <label>Email Institucional:</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Digite seu e-mail"
-            required
-          />
+    if (cpf.length > 11) cpf = cpf.slice(0, 11); // Limita a 11 dígitos
 
-          <label>CPF:</label>
-          <input type="text" name="cpf" placeholder="Digite seu CPF" required />
+    // Adiciona os pontos e traço
+    if (cpf.length >= 10) {
+      campo.value = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, "$1.$2.$3-$4");
+    } else if (cpf.length >= 7) {
+      campo.value = cpf.replace(/(\d{3})(\d{3})(\d{1,3})/, "$1.$2.$3");
+    } else if (cpf.length >= 4) {
+      campo.value = cpf.replace(/(\d{3})(\d{1,3})/, "$1.$2");
+    } else {
+      campo.value = cpf;
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="/ocorrenciamain/img/brasao-do-ceara.png" width="70px" />
+      <p class="texto" style="color: white">
+        GOVERNO DO ESTADO DO CEARÁ <br />
+        19ª CREDE - EEEP PAULO BARBOSA LEITE
+      </p>
+      <img src="/ocorrenciamain/img/escola-removebg-preview.png" width="100px" />
+    </div>
+  </header>
 
-          <label>Disciplina:</label>
-          <div class="container">
-            <div class="disciplinas-container" id="disciplinasContainer"></div>
-            <input
-              type="text"
-              id="disciplinaInput"
-              placeholder="Digite uma disciplina"
-            />
-            <button type="button" onclick="adicionarDisciplina()">
-              Adicionar
-            </button>
-          </div>
+  <main>
+    <div class="cadastro-container">
+      <a href="geral.html" class="btn-voltar"><button class="button">Voltar</button></a>
+      <h2>Cadastro de Professor</h2>
+      <form action="/ocorrenciamain/api/processo_cadastro_professor.php" method="POST" onsubmit="return validarSenha()">
+        <label>Nome:</label>
+        <input type="text" name="nome" required />
 
-          <label>Senha:</label>
-          <input
-            type="password"
-            id="senha"
-            name="senha"
-            placeholder="Digite sua senha"
-            required
-          />
+        <label>Email Institucional:</label>
+        <input type="email" name="email" required />
 
-          <label>Confirme sua Senha:</label>
-          <input
-            type="password"
-            id="confirmaSenha"
-            name="confirmaSenha"
-            placeholder="Confirme sua senha"
-            required
-          />
+       <label>CPF:</label>
+<input 
+  type="text" 
+  name="cpf" 
+  id="cpf" 
+  maxlength="14" 
+  placeholder="000.000.000-00" 
+  required 
+  oninput="formatarCPF(this)"
+/>
 
-          <p id="erroSenha" class="erro" style="color: red"></p>
 
-          <button type="submit">Cadastrar Professor</button>
-        </form>
-      </div>
-    </main>
-  </body>
+        <label>Disciplinas:</label>
+        <div class="container">
+          <div id="disciplinasContainer" class="disciplinas-container"></div>
+          <input type="text" id="disciplinaInput" placeholder="Digite uma disciplina" />
+          <button type="button" onclick="adicionarDisciplina()">Adicionar</button>
+        </div>
+        <input type="hidden" name="disciplinas" id="disciplinas" />
+
+        <label>Senha:</label>
+        <input type="password" id="senha" name="senha" required />
+
+        <label>Confirme sua Senha:</label>
+        <input type="password" id="confirmaSenha" required />
+
+        <p id="erroSenha" style="color: red;"></p>
+
+        <button type="submit">Cadastrar Professor</button>
+      </form>
+    </div>
+  </main>
+</body>
 </html>
