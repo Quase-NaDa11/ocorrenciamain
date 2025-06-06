@@ -2,8 +2,11 @@
 session_start();
 include 'conexao.php';
 
+$email = '';
+$erro = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'] ?? '';
+    $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
     $senha = $_POST['senha'] ?? '';
 
     if (empty($email) || empty($senha)) {
@@ -21,7 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (password_verify($senha, $user['senha'])) {
                 $_SESSION['coordenador_id'] = $user['id'];
                 $_SESSION['nome'] = $user['nome'];
-                
+
+                $stmt->close();
+                $conn->close();
 
                 header("Location: /ocorrenciamain/public/geral.html");
                 exit();
@@ -31,6 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $erro = "Email ou senha inválidos!";
         }
+
+        $stmt->close();
+        $conn->close();
     }
 }
 ?>
@@ -47,13 +55,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login-container">
         <h2>Login da Coordenação</h2>
         <?php if (!empty($erro)) : ?>
-            <p style="color: red;"><?= htmlspecialchars($erro) ?></p>
+            <p style="color: red; text-align: center; margin-bottom: 15px;">
+                <?= htmlspecialchars($erro) ?>
+            </p>
         <?php endif; ?>
         <form action="" method="POST">
-            <label>Email:</label>
-            <input type="email" name="email" placeholder="Digite seu e-mail" required />
-            <label>Senha:</label>
-            <input type="password" name="senha" placeholder="Digite sua senha" required />
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Digite seu e-mail" value="<?= htmlspecialchars($email) ?>" required />
+
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required />
+
             <button type="submit">Entrar</button>
         </form>
     </div>
