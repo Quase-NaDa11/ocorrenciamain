@@ -10,14 +10,16 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nome = $_POST["nome"] ?? '';
-    $email = $_POST["email"] ?? '';
-    $cpf = $_POST["cpf"] ?? '';
-    $disciplinas = $_POST["disciplinas"] ?? '';
+    $nome = trim($_POST["nome"] ?? '');
+    $email = trim($_POST["email"] ?? '');
+    $cpf = trim($_POST["cpf"] ?? '');
+    $disciplinas = trim($_POST["disciplinas"] ?? '');
     $senha = $_POST["senha"] ?? '';
 
+    // Validação básica
     if (empty($nome) || empty($email) || empty($cpf) || empty($disciplinas) || empty($senha)) {
-        die("Erro: Todos os campos são obrigatórios.");
+        echo "<script>alert('Todos os campos devem ser preenchidos.'); window.history.back();</script>";
+        exit();
     }
 
     // Verifica duplicidade de e-mail
@@ -27,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->execute();
     $stmt->store_result();
     if ($stmt->num_rows > 0) {
-        die("Erro: Este email já está cadastrado.");
+        echo "<script>alert('Erro: Este e-mail já está cadastrado.'); window.history.back();</script>";
+        exit();
     }
     $stmt->close();
 
@@ -40,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("sssss", $nome, $email, $cpf, $disciplinas, $senha_hash);
 
     if ($stmt->execute()) {
-        header("Location: /ocorrenciamain/public/geral.html");
+        echo "<script>alert('Professor cadastrado com sucesso!'); window.location.href = '/ocorrenciamain/public/geral.html';</script>";
         exit();
     } else {
         echo "Erro ao cadastrar: " . $stmt->error;

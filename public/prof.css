@@ -9,12 +9,10 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #048a23;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: #048a23;
 }
 
 /* Header */
@@ -33,7 +31,6 @@ header {
   gap: 20px;
 }
 
-/* Estilos das imagens */
 .logo-ceara {
   width: 70px;
 }
@@ -42,7 +39,6 @@ header {
   width: 100px;
 }
 
-/* Texto do header */
 .texto {
   color: white;
   font-size: 14px;
@@ -61,11 +57,12 @@ header {
 
 /* Main */
 main {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin-top: 20px;
+  padding: 20px 10px;
+  min-height: calc(100vh - 120px);
 }
 
 /* Cadastro */
@@ -181,8 +178,7 @@ button:hover {
   color: #ffcccc;
 }
 
-/* Responsivo */
-
+/* Responsivo para telas maiores */
 @media (min-width: 1200px) {
   .cadastro-container {
     max-width: 500px;
@@ -199,9 +195,10 @@ button:hover {
   }
 }
 
-@media (min-width: 768px) and (max-width: 1199px) {
+/* 🖥️ Responsivo para notebooks (768px a 1366px) */
+@media (min-width: 768px) and (max-width: 1366px) {
   .cadastro-container {
-    max-width: 80%;
+    max-width: 450px;
     padding: 30px;
   }
 
@@ -213,8 +210,13 @@ button:hover {
   button {
     font-size: 16px;
   }
+
+  .logo-escola {
+    width: 95px;
+  }
 }
 
+/* Tablets pequenos */
 @media (min-width: 480px) and (max-width: 767px) {
   .cadastro-container {
     max-width: 90%;
@@ -235,6 +237,7 @@ button:hover {
   }
 }
 
+/* Celulares */
 @media (max-width: 479px) {
   .cadastro-container {
     max-width: 95%;

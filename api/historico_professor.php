@@ -1,7 +1,16 @@
 <?php
+session_start();
 include 'conexao.php';
 
-// Verifica se a coluna 'status' existe na tabela Ocorrencia e cria se não existir
+// Verifica se o professor está logado
+if (!isset($_SESSION['id'])) {
+    header("Location: /ocorrenciamain/public/login.html");
+    exit();
+}
+
+$idProfessor = $_SESSION['id'];
+
+// Verifica se a coluna 'status' existe e cria se não existir
 $verifica_coluna = "SHOW COLUMNS FROM Ocorrencia LIKE 'status'";
 $result_coluna = $conn->query($verifica_coluna);
 if ($result_coluna->num_rows == 0) {
@@ -9,21 +18,23 @@ if ($result_coluna->num_rows == 0) {
     $conn->query($alter_sql);
 }
 
-// Consulta os dados incluindo professor e coordenador
+// Consulta apenas ocorrências do professor logado (sem coordenador)
 $sql = "SELECT
           Ocorrencia.id,
           Ocorrencia.estudante,
           Ocorrencia.situacao,
           Ocorrencia.data,
           Professor.nome AS professor,
-          Coordenador.nome AS coordenador,
           Ocorrencia.status
         FROM Ocorrencia
         LEFT JOIN Professor ON Ocorrencia.professor_id = Professor.id
-        LEFT JOIN Coordenador ON Ocorrencia.coordenador_id = Coordenador.id
+        WHERE Ocorrencia.professor_id = ?
         ORDER BY Ocorrencia.data DESC";
 
-$result = $conn->query($sql);
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $idProfessor);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +92,6 @@ $result = $conn->query($sql);
               <th>Problema</th>
               <th>Data</th>
               <th>Professor</th>
-              <th>Coordenador</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -91,8 +101,7 @@ $result = $conn->query($sql);
               <td data-label="Nome"><?php echo htmlspecialchars($row['estudante']); ?></td>
               <td data-label="Problema"><?php echo htmlspecialchars($row['situacao']); ?></td>
               <td data-label="Data"><?php echo htmlspecialchars($row['data']); ?></td>
-              <td data-label="Professor"><?php echo $row['professor'] ? htmlspecialchars($row['professor']) : '-'; ?></td>
-              <td data-label="Coordenador"><?php echo $row['coordenador'] ? htmlspecialchars($row['coordenador']) : '-'; ?></td>
+              <td data-label="Professor"><?php echo htmlspecialchars($row['professor']); ?></td>
               <td data-label="Status"><?php echo htmlspecialchars($row['status']); ?></td>
             </tr>
             <?php } ?>
@@ -138,4 +147,7 @@ document.getElementById("txtBusca").addEventListener("input", function () {
 </body>
 </html>
 
-<?php $conn->close(); ?>
+<?php
+$stmt->close();
+$conn->close();
+?>

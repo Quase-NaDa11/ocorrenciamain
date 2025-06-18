@@ -10,7 +10,6 @@
       let input = document.getElementById("disciplinaInput");
       let disciplina = input.value.trim();
       let container = document.getElementById("disciplinasContainer");
-      let hiddenInput = document.getElementById("disciplinas");
 
       if (disciplina && !document.getElementById(disciplina)) {
         let item = document.createElement("div");
@@ -59,58 +58,45 @@
     }
 
     function formatarCPF(campo) {
-    let cpf = campo.value.replace(/\D/g, ""); // Remove tudo que não for número
+      let cpf = campo.value.replace(/\D/g, "");
+      if (cpf.length > 11) cpf = cpf.slice(0, 11);
 
-    if (cpf.length > 11) cpf = cpf.slice(0, 11); // Limita a 11 dígitos
-
-    // Adiciona os pontos e traço
-    if (cpf.length >= 10) {
-      campo.value = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, "$1.$2.$3-$4");
-    } else if (cpf.length >= 7) {
-      campo.value = cpf.replace(/(\d{3})(\d{3})(\d{1,3})/, "$1.$2.$3");
-    } else if (cpf.length >= 4) {
-      campo.value = cpf.replace(/(\d{3})(\d{1,3})/, "$1.$2");
-    } else {
-      campo.value = cpf;
+      if (cpf.length >= 10) {
+        campo.value = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, "$1.$2.$3-$4");
+      } else if (cpf.length >= 7) {
+        campo.value = cpf.replace(/(\d{3})(\d{3})(\d{1,3})/, "$1.$2.$3");
+      } else if (cpf.length >= 4) {
+        campo.value = cpf.replace(/(\d{3})(\d{1,3})/, "$1.$2");
+      }
     }
-  }
   </script>
 </head>
 <body>
   <header>
     <div class="logo-container">
-     <img src="/ocorrenciamain/img/brasao-do-ceara.png" class="logo-ceara"  />
+      <img src="/ocorrenciamain/img/brasao-do-ceara.png" class="logo-ceara" />
       <p class="texto" style="color: white">
-       GOVERNO DO ESTADO DO CEARÁ <br />
-            19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
-            ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSONAL PAULO BARBOSA LEITE
+        GOVERNO DO ESTADO DO CEARÁ <br />
+        19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
+        ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE
       </p>
-        <img src="/ocorrenciamain/img/escola-removebg-preview.png" class="logo-escola">
+      <img src="/ocorrenciamain/img/escola-removebg-preview.png" class="logo-escola" />
     </div>
   </header>
 
   <main>
     <div class="cadastro-container">
-      <a href="geral.html" class="btn-voltar"><button class="button">Voltar</button></a>
+      <a href="geral.html" class="btn-voltar">Voltar</a>
       <h2>Cadastro de Professor</h2>
-      <form action="/ocorrenciamain/api/processo_cadastro_professor.php" method="POST" onsubmit="return validarSenha()">
+      <form action="/ocorrenciamain/api/processo_cadastro_professor.php" method="POST" onsubmit="atualizarDisciplinas(); return validarSenha();">
         <label>Nome:</label>
         <input type="text" name="nome" required />
 
         <label>Email Institucional:</label>
         <input type="email" name="email" required />
 
-       <label>CPF:</label>
-<input 
-  type="text" 
-  name="cpf" 
-  id="cpf" 
-  maxlength="14" 
-  placeholder="000.000.000-00" 
-  required 
-  oninput="formatarCPF(this)"
-/>
-
+        <label>CPF:</label>
+        <input type="text" name="cpf" id="cpf" maxlength="14" placeholder="000.000.000-00" required oninput="formatarCPF(this)" />
 
         <label>Disciplinas:</label>
         <div class="container">
@@ -125,7 +111,6 @@
 
         <label>Confirme sua Senha:</label>
         <input type="password" id="confirmaSenha" required />
-
         <p id="erroSenha" style="color: red;"></p>
 
         <button type="submit">Cadastrar Professor</button>
