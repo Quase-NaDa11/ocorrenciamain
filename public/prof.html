@@ -139,23 +139,22 @@
   </script>
 </head>
 <body>
-  <header>
-    <div class="logo-container" style="color: #fff;">
-      <img src="/ocorrenciamain/img/brasao-do-ceara.png" class="logo-ceara" alt="Brasão do Ceará" style="width:70px;" />
-      <div>
-        <p style="margin:0; font-weight:600; font-size:14px;">
-          GOVERNO DO ESTADO DO CEARÁ <br />
-          19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
-          ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE
-        </p>
-      </div>
-      <img src="/ocorrenciamain/img/escola-removebg-preview.png" class="logo-escola" alt="Logo da Escola" style="width:100px;" />
+ <header>
+    <div class="logo-container">
+      <img src="/ocorrenciamain/img/brasao-do-ceara.png" class="logo-ceara" alt="Brasão do Ceará" />
+      <p class="texto">
+        GOVERNO DO ESTADO DO CEARÁ <br />
+        19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
+        ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE
+      </p>
+      <img src="/ocorrenciamain/img/escola-removebg-preview.png" class="logo-escola" alt="Logo da Escola" />
     </div>
   </header>
-
   <main>
     <div class="cadastro-container">
-      <a href="geral.html" class="btn-voltar">← Voltar</a>
+      <a href="/ocorrenciamain/public/geral.html" class="btn-voltar">
+        <button class="button">Voltar</button>
+      </a>
       <h2 style="text-align:center; margin-bottom:20px;">Cadastro de Professor</h2>
       <form id="formProfessor" method="POST" action="/ocorrenciamain/api/processo_cadastro_professor.php">
         <label for="nome">Nome:</label>

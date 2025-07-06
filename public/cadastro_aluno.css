@@ -48,14 +48,14 @@ header {
 /* Brasão do Ceará desaparece em telas até 767px */
 @media (max-width: 767px) {
   .logo-ceara {
-    display: none;
+    display: none !important;
   }
 }
 
 /* Texto desaparece somente em telas até 479px (celulares) */
 @media (max-width: 479px) {
   .texto {
-    display: none;
+    display: none !important;
   }
 
   .logo-container {
@@ -91,42 +91,56 @@ main {
 h2 {
   margin-bottom: 20px;
   color: #048a23;
+  text-align: center;
 }
 
-input {
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #048a23;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 10px 15px;
+  margin-top: 6px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
 }
 
-input:focus {
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
   border-color: #048a23;
   outline: none;
+  background-color: #fff;
+  box-shadow: 0 0 5px #048a23;
 }
 
 button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background: #048a23;
   color: white;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: 0.3s;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
   background: #03731c;
-}
-
-.erro {
-  color: red;
-  font-size: 14px;
-  margin-bottom: 10px;
 }
 
 .btn-voltar {
@@ -142,55 +156,24 @@ button:hover {
   box-sizing: border-box;
 }
 
-.container {
-  margin-bottom: 10px;
-  margin-top: 5px;
+.btn-voltar button {
+  padding: 8px 16px;
+  font-weight: 600;
 }
 
-.disciplinas-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 15px;
-  justify-content: center;
-}
-
-.disciplina-item {
-  background: #03731c;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  font-weight: bold;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  height: 30px;
-}
-
-.remove-btn {
-  background: transparent;
-  color: white;
-  border: none;
-  font-size: 18px;
+/* Estilo personalizado para o select com seta azul */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23007BFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px 16px;
   cursor: pointer;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin-left: 6px;
-  line-height: 1;
-  height: 18px;
-  width: 18px;
 }
 
-.remove-btn:hover {
-  color: #ffcccc;
-}
-
-/* Responsivo para telas maiores */
+/* Responsividade */
 @media (min-width: 1200px) {
   .cadastro-container {
     max-width: 500px;
@@ -202,13 +185,13 @@ button:hover {
   }
 
   input,
+  select,
   button {
     font-size: 18px;
   }
 }
 
-/* 🖥️ Responsivo para notebooks (768px a 1366px) */
-@media (min-width: 768px) and (max-width: 1366px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   .cadastro-container {
     max-width: 450px;
     padding: 30px;
@@ -219,6 +202,7 @@ button:hover {
   }
 
   input,
+  select,
   button {
     font-size: 16px;
   }
@@ -228,8 +212,7 @@ button:hover {
   }
 }
 
-/* Tablets pequenos */
-@media (min-width: 480px) and (max-width: 767px) {
+@media (max-width: 767px) {
   .cadastro-container {
     max-width: 90%;
     padding: 20px;
@@ -240,6 +223,7 @@ button:hover {
   }
 
   input,
+  select,
   button {
     font-size: 14px;
   }
@@ -249,17 +233,23 @@ button:hover {
   }
 }
 
-/* Texto desaparece somente em telas até 479px (celulares) */
 @media (max-width: 479px) {
-  .texto {
-    display: none !important;  /* Força sumir */
+  .cadastro-container {
+    max-width: 95%;
+    padding: 15px;
   }
 
-  .logo-container {
-    justify-content: center; /* Centraliza só a logo */
+  h2 {
+    font-size: 20px;
+  }
+
+  input,
+  select,
+  button {
+    font-size: 14px;
   }
 
   .logo-escola {
-    width: 80px; /* Ajusta tamanho da logo em celular */
+    width: 80px;
   }
 }
