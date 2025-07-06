@@ -45,11 +45,20 @@ CREATE TABLE Coordenacao (
     responsavel_recebimento VARCHAR(255) NOT NULL,
     FOREIGN KEY (ocorrencia_id) REFERENCES Ocorrencia(id) ON DELETE CASCADE
 );
-
-CREATE TABLE recebimento (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    ocorrencia_id INT NOT NULL,
-    data_recebimento DATE NOT NULL,
-    responsavel VARCHAR(100) NOT NULL,
-    FOREIGN KEY (ocorrencia_id) REFERENCES ocorrencia(id)
+CREATE TABLE aluno (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  matricula VARCHAR(50) NOT NULL UNIQUE,
+  turma VARCHAR(50) NOT NULL,
+  senha VARCHAR(255) NOT NULL
 );
+
+ALTER TABLE Ocorrencia ADD COLUMN lida TINYINT(1) DEFAULT 0;
+
+
+ALTER TABLE Professor ADD COLUMN turma_dt VARCHAR(50) DEFAULT NULL;
+
+ALTER TABLE professor ADD COLUMN dt TINYINT(1) NOT NULL DEFAULT 0;
+ALTER TABLE professor ADD COLUMN turma_dt VARCHAR(50) NULL;
+ALTER TABLE Professor ADD COLUMN disciplinas VARCHAR(255);

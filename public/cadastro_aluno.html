@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Aluno</title>
+  <link rel="stylesheet" href="/ocorrenciamain/public/prof.css" />
+  <script>  function formatarCPF(campo) {
+      let cpf = campo.value.replace(/\D/g, "");
+      if (cpf.length > 11) cpf = cpf.slice(0, 11);
+
+      if (cpf.length >= 10) {
+        campo.value = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, "$1.$2.$3-$4");
+      } else if (cpf.length >= 7) {
+        campo.value = cpf.replace(/(\d{3})(\d{3})(\d{1,3})/, "$1.$2.$3");
+      } else if (cpf.length >= 4) {
+        campo.value = cpf.replace(/(\d{3})(\d{1,3})/, "$1.$2");
+      }
+    }</script>
+    <style>select {
+  width: 100%;
+  max-width: 400px;
+ 
+  font-size: 1rem;
+   border: 1px solid #ccc;
+  border-radius: 5px;
+  padding:10px 15px;
+ 
+  background-color: #fff;
+  color: #333;
+  appearance: none; /* remove estilo padrão */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23007BFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px 16px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+
+  outline: none;
+  background-color: #fff;
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="/ocorrenciamain/img/brasao-do-ceara.png" alt="" width="70px" />
+      <p class="texto" style="color: white">
+        GOVERNO DO ESTADO DO CEARÁ <br />
+        19ª COORDENADORIA REGIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO <br />
+        ESCOLA ESTADUAL DE EDUCAÇÃO PROFISSIONAL PAULO BARBOSA LEITE
+      </p>
+      <img src="/ocorrenciamain/img/escola-removebg-preview.png" alt="" width="100px" />
+    </div>
+  </header>
+  <main>
+    <div class="cadastro-container">
+      <a href="/ocorrenciamain/public/geral.html" class="btn-voltar">
+        <button class="button">Voltar</button>
+      </a>
+      <h2>Cadastro de Aluno</h2>
+     <form action="/ocorrenciamain/api/processa_cadastro_aluno.php" method="POST">
+    <label>Nome:</label>
+    <input type="text" name="nome" required />
+
+    <label>Email:</label>
+    <input type="email" name="email" required />
+
+     <label>CPF:</label>
+        <input type="text" name="cpf" id="cpf" maxlength="14" placeholder="000.000.000-00" required oninput="formatarCPF(this)" />
+
+    <label>Matrícula:</label>
+    <input type="text" name="matricula" required />
+
+     <label>Turma:</label>
+          <select name="turma" id="turma" required>
+            <option disabled selected hidden>Selecione a turma</option>
+            <option value="1° Administração">1° Administração</option>
+            <option value="1° Agropecuária">1° Agropecuária</option>
+            <option value="1° Informática">1° Informática</option>
+            <option value="1° Desenvolvimento de Sistema">1° Desenvolvimento de Sistema</option>
+            <option value="2° Administração">2° Administração</option>
+            <option value="2° Agropecuária">2° Agropecuária</option>
+            <option value="2° Informática">2° Informática</option>
+            <option value="2° Desenvolvimento de Sistema">2° Desenvolvimento de Sistema</option>
+            <option value="3° Administração">3° Administração</option>
+            <option value="3° Agropecuária">3° Agropecuária</option>
+            <option value="3° Informática">3° Informática</option>
+            <option value="3° Desenvolvimento de Sistema">3° Desenvolvimento de Sistema</option>
+          </select>
+        </fieldset> <br>
+
+    <label>Senha:</label>
+    <input type="password" name="senha" required />
+
+    <button type="submit">Cadastrar Aluno</button>
+</form>
+
+    </div>
+  </main>
+</body>
+</html>

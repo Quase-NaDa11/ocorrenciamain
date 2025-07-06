@@ -7,9 +7,13 @@ if (!isset($_SESSION['id'])) {
     exit();
 }
 
-$idProfessor = $_SESSION['id'];
-$ehDT = (isset($_SESSION['dt']) && $_SESSION['dt'] == 1);
-$turmaDT = $_SESSION['turma_dt'] ?? '';
+// Só diretor de turma pode acessar
+if (!isset($_SESSION['dt']) || $_SESSION['dt'] != 1) {
+    echo "<script>alert('Acesso negado: você não é Diretor de Turma.'); window.location.href = '/ocorrenciamain/api/historico_professor.php';</script>";
+    exit();
+}
+
+$turmaDT = $_SESSION['turma_dt'];
 
 // Verifica se a coluna 'status' existe e cria se não existir
 $verifica_coluna = "SHOW COLUMNS FROM Ocorrencia LIKE 'status'";
@@ -19,21 +23,20 @@ if ($result_coluna->num_rows == 0) {
     $conn->query($alter_sql);
 }
 
-// Busca ocorrências do professor logado
-$sql = "SELECT
-          Ocorrencia.id,
-          Ocorrencia.estudante,
-          Ocorrencia.situacao,
-          Ocorrencia.data,
-          Professor.nome AS professor,
-          Ocorrencia.status
-        FROM Ocorrencia
-        LEFT JOIN Professor ON Ocorrencia.professor_id = Professor.id
-        WHERE Ocorrencia.professor_id = ?
-        ORDER BY Ocorrencia.data DESC";
+$sql_ocorrencias = "SELECT
+                        Ocorrencia.id,
+                        Ocorrencia.estudante,
+                        Ocorrencia.situacao,
+                        Ocorrencia.data,
+                        Professor.nome AS professor,
+                        Ocorrencia.status
+                    FROM Ocorrencia
+                    LEFT JOIN Professor ON Ocorrencia.professor_id = Professor.id
+                    WHERE Ocorrencia.turma = ?
+                    ORDER BY Ocorrencia.data DESC";
 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $idProfessor);
+$stmt = $conn->prepare($sql_ocorrencias);
+$stmt->bind_param("s", $turmaDT);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
@@ -43,7 +46,7 @@ $result = $stmt->get_result();
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Histórico de Ocorrências - Professor</title>
+<title>Ocorrências da Minha Turma - Diretor de Turma</title>
 <link rel="stylesheet" href="/ocorrenciamain/public/historico.css" />
 </head>
 <body>
@@ -69,25 +72,16 @@ $result = $stmt->get_result();
         <button type="button" id="pendente" class="btn btn-warning btn-xs">Pendente</button>
         <button type="button" id="todos" class="btn btn-xs">Todos</button>
 
-        <!-- Link para Nova Ocorrência -->
-        <div class="btn-group">
-          <a href="/ocorrenciamain/public/TelaOcorrencia.html" class="btn btn-warning btn-xs">
-            <button>Nova Ocorrência</button>
+        <!-- Voltar para histórico -->
+        <div class="btn-group" style="margin-left: 10px;">
+          <a href="/ocorrenciamain/api/historico_professor.php" class="btn btn-secondary btn-xs">
+            <button>Voltar</button>
           </a>
         </div>
 
-        <!-- BOTÃO MINHA TURMA APENAS PARA DT -->
-        <?php if ($ehDT): ?>
-          <div class="btn-group" style="margin-left: 10px;">
-            <a href="/ocorrenciamain/api/minha_turma.php" class="btn btn-info btn-xs">
-              <button>Minha Turma</button>
-            </a>
-          </div>
-        <?php endif; ?>
-
         <!-- Campo de busca -->
         <div id="divBusca">
-          <input type="text" id="txtBusca" placeholder="Buscar..." />
+          <input type="text" id="txtBusca" placeholder="Buscar por nome do estudante..." />
           <img src="/ocorrenciamain/img/lupa.png" id="btnBusca" alt="Buscar" width="20px" />
         </div>
       </div>

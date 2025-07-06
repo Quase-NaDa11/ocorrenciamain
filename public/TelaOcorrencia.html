@@ -43,8 +43,10 @@
           
 
           <fieldset class="estudante">
-            <label for="estudante">Estudante:</label><br />
-            <input type="text" name="estudante" required /><br />
+           <label for="estudante">Estudante:</label><br />
+<select name="estudante" id="estudante" required>
+  <option value="">Selecione a turma primeiro</option>
+</select><br />
 
             <label for="aula">Aula:</label>
             <select name="aula" required>
@@ -74,23 +76,24 @@
 
             <input type="text" name="situacao_outros" id="outro" style="display: none" placeholder="Digite a situação" />
 
-            <label for="turma">Turma:</label>
-            <select name="turma" required>
-              <option disabled selected hidden>Selecione a turma</option>
-              <option value="1º Administração">1° Administração</option>
-              <option value="1º Agropecuária">1° Agropecuária</option>
-              <option value="1º Informática">1° Informática</option>
-              <option value="1º Desenvolvimento de Sistema">1° Desenvolvimento de Sistema</option>
-              <option value="2º Administração">2° Administração</option>
-              <option value="2º Agropecuária">2° Agropecuária</option>
-              <option value="2º Informática">2° Informática</option>
-              <option value="2º Desenvolvimento de Sistema">2° Desenvolvimento de Sistema</option>
-              <option value="3º Administração">3° Administração</option>
-              <option value="3º Agropecuária">3° Agropecuária</option>
-              <option value="3º Informática">3° Informática</option>
-              <option value="3º Desenvolvimento de Sistema">3° Desenvolvimento de Sistema</option>
-            </select>
-          </fieldset>
+            
+          <label>Turma:</label>
+          <select name="turma" id="turma" required>
+            <option disabled selected hidden>Selecione a turma</option>
+            <option value="1° Administração">1° Administração</option>
+            <option value="1° Agropecuária">1° Agropecuária</option>
+            <option value="1° Informática">1° Informática</option>
+            <option value="1° Desenvolvimento de Sistema">1° Desenvolvimento de Sistema</option>
+            <option value="2° Administração">2° Administração</option>
+            <option value="2° Agropecuária">2° Agropecuária</option>
+            <option value="2° Informática">2° Informática</option>
+            <option value="2° Desenvolvimento de Sistema">2° Desenvolvimento de Sistema</option>
+            <option value="3° Administração">3° Administração</option>
+            <option value="3° Agropecuária">3° Agropecuária</option>
+            <option value="3° Informática">3° Informática</option>
+            <option value="3° Desenvolvimento de Sistema">3° Desenvolvimento de Sistema</option>
+          </select>
+        </fieldset>
 
           <fieldset class="professor">
             <label for="professor_nome">Professor Responsável:</label>
@@ -134,6 +137,32 @@
         document.getElementById('data').value = data.dataAtual;
       })
       .catch(err => console.error('Erro ao carregar dados:', err));
+
+      // Quando mudar a turma, buscar alunos daquela turma
+document.querySelector('select[name="turma"]').addEventListener('change', function () {
+  const turma = this.value;
+  const selectEstudante = document.getElementById('estudante');
+
+  // Limpa a lista atual
+  selectEstudante.innerHTML = '<option value="">Carregando alunos...</option>';
+
+  fetch('/ocorrenciamain/api/buscar_alunos_por_turma.php?turma=' + encodeURIComponent(turma))
+    .then(response => response.json())
+    .then(alunos => {
+      selectEstudante.innerHTML = '<option value="">Selecione um aluno</option>';
+      alunos.forEach(nome => {
+        const option = document.createElement('option');
+        option.value = nome;
+        option.textContent = nome;
+        selectEstudante.appendChild(option);
+      });
+    })
+    .catch(error => {
+      console.error('Erro ao buscar alunos:', error);
+      selectEstudante.innerHTML = '<option value="">Erro ao carregar alunos</option>';
+    });
+});
+
         </script>
       </div>
     </main>

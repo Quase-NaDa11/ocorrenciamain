@@ -10,23 +10,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Por favor, preencha email e senha.");
     }
 
-    // Troque 'email_institucional' pelo nome correto do campo do seu banco
-    $sql = "SELECT id, nome, senha FROM Professor WHERE email_institucional = ?";
+    // Buscando dados do professor incluindo dt e turma_dt
+    $sql = "SELECT id, nome, senha, dt, turma_dt FROM Professor WHERE email_institucional = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows == 1) {
-        $stmt->bind_result($id, $nome, $senha_hash);
+        $stmt->bind_result($id, $nome, $senha_hash, $dt, $turma_dt);
         $stmt->fetch();
 
-        // Verifique senha (supondo que está em hash)
         if (password_verify($senha, $senha_hash)) {
             $_SESSION['id'] = $id;
             $_SESSION['nome'] = $nome;
+            $_SESSION['dt'] = $dt;                 // 1 se Diretor de Turma, 0 se não
+            $_SESSION['turma_dt'] = $turma_dt;     // turma do diretor
 
-            header("Location: historico_professor.php");
+            header("Location: /ocorrenciamain/api/historico_professor.php");
             exit();
         } else {
             echo "Senha incorreta.";
@@ -34,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Usuário não encontrado.";
     }
+
     $stmt->close();
     $conn->close();
 }
