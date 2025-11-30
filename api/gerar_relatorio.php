@@ -1,5 +1,18 @@
 <?php
-include '../api/conexao.php';
+session_start();
+include 'conexao.php';
+
+if (!isset($_SESSION['id'])) {
+    header("Location: /ocorrenciamain/public/login_professor.html");
+    exit();
+}
+
+if (!isset($_SESSION['dt']) || $_SESSION['dt'] != 1) {
+    echo "<script>alert('Acesso negado: você não é Diretor de Turma.'); window.location.href = '/ocorrenciamain/api/historico_professor.php';</script>";
+    exit();
+}
+
+$turmaDT = $_SESSION['turma_dt'];
 
 $mes = $_GET['mes'] ?? date('m');
 $ano = $_GET['ano'] ?? date('Y');
@@ -14,11 +27,13 @@ $sql = "SELECT
         FROM Ocorrencia
         LEFT JOIN Professor ON Ocorrencia.professor_id = Professor.id
         LEFT JOIN Coordenador ON Ocorrencia.coordenador_id = Coordenador.id
-        WHERE MONTH(data) = ? AND YEAR(data) = ?
-        ORDER BY data DESC";
+        WHERE MONTH(Ocorrencia.data) = ? 
+          AND YEAR(Ocorrencia.data) = ?
+          AND Ocorrencia.turma = ?
+        ORDER BY Ocorrencia.data DESC";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ii", $mes, $ano);
+$stmt->bind_param("iis", $mes, $ano, $turmaDT);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
@@ -26,7 +41,7 @@ $result = $stmt->get_result();
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Relatório Mensal</title>
+  <title>Relatório Mensal da Turma <?= htmlspecialchars($turmaDT) ?></title>
   <style>
     * {
       margin: 0;
@@ -79,6 +94,7 @@ $result = $stmt->get_result();
       color: white;
       border: none;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
     button:hover {
@@ -160,8 +176,8 @@ $result = $stmt->get_result();
 </head>
 <body>
   <header>
-    <h1>Relatório Mensal de Ocorrências</h1>
-    <p>Período: <?= $mes ?>/<?= $ano ?></p>
+    <h1>Relatório Mensal da Turma <?= htmlspecialchars($turmaDT) ?></h1>
+    <p>Período: <?= str_pad($mes,2,'0',STR_PAD_LEFT) ?>/<?= $ano ?></p>
   </header>
 
   <div class="filtros">
@@ -217,7 +233,8 @@ $result = $stmt->get_result();
 
   <script>
     function exportarPDF() {
-      window.print(); // Alternativa simples: usar "Salvar como PDF" na impressão
+      // Alternativa simples: só chama a impressão do navegador, o usuário pode escolher "Salvar como PDF"
+      window.print();
     }
   </script>
 </body>
